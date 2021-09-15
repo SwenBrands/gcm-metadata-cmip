@@ -7,9 +7,7 @@ output = mrun_f (string), family_f(string), cmip_f(int) and rgb_f(string) , mark
 latres_atm_f (int), lonres_atm_f (int), lev_atm_f (int), latres_oc_f (int) ,lonres_oc_f (int) , lev_oc_f (int) , ecs_f,tcr_f (int)
 as explained in analysis_hist_<date>.py, if set to np.nan, then it is not yet in use.
 
-complex_f integers are for Dyn. Veg, other TBGC, AEROSOLS, CHEM., OBGC, ICE Sheet, 0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive
-tbgc = terrestrial biogeochemical processes
-obgc = oceanic biogeochemical processes
+The order of the intergers in complex_f is as follows: 1. Dynamic Vegetation, 2. Other terrestrial biogeochemistry processes (tbgc), 3. Aerosols, 4. Atmospheric chemistry, 5. Ocean biogeochemistry (obgc), 6. Ice sheet dynamics, 0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive
 
 If the metadata in the nc files (source_id argument) does not agree with the description in the article file, preference is given to the article information. If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
 
