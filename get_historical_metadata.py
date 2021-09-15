@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-"""subfunction of <analysis_hist_<date>.py>; assigns metadata to historical cmip runs
+"""assigns metadata to historical cmip runs
+
 input = model name (string)
 output = mrun_f (string), family_f(string), cmip_f(int) and rgb_f(string) , marker_f(string),
 latres_atm_f (int), lonres_atm_f (int), lev_atm_f (int), latres_oc_f (int) ,lonres_oc_f (int) , lev_oc_f (int) , ecs_f,tcr_f (int)
