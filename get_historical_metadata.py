@@ -160,7 +160,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         obgc_f = 'MOM-L40v1'
         coupler_f = 'NCAR flux coupler version 5'
-        complex_f = '221120' ##Partly confirmed by Laurent Li, Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2, https://doi.org/10.5194/gmd-12-1573-2019
+        complex_f = '221120' #Confirmed by Tongwen Wu and Laurent Li, Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2, https://doi.org/10.5194/gmd-12-1573-2019
         addinfo_f = 'Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2'
         cmip_f = 5
         rgb_f = '#FF4500'
@@ -186,7 +186,7 @@ def get_historical_metadata(model):
         obgc_f = 'none'
         landice_f = 'none'
         coupler_f = 'NCAR flux coupler version 5'
-        complex_f = '221120' #Partly confirmed by Laurent Li, Prognostic spatial CO2 in the atmosphere, https://doi.org/10.5194/gmd-12-1573-2019
+        complex_f = '221120' #Confirmed by Tongwen Wu and Laurent Li, Prognostic spatial CO2 in the atmosphere, https://doi.org/10.5194/gmd-12-1573-2019
         addinfo_f = 'Prognostic spatial CO2 in the atmosphere'
         cmip_f = 6
         rgb_f = '#FF4500'
