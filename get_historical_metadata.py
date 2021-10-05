@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
-"""assigns metadata to historical cmip runs
-
+"""subfunction of <analysis_hist_<date>.py>; assigns metadata to historical cmip runs
 input = model name (string)
 output = mrun_f (string), family_f(string), cmip_f(int) and rgb_f(string) , marker_f(string),
 latres_atm_f (int), lonres_atm_f (int), lev_atm_f (int), latres_oc_f (int) ,lonres_oc_f (int) , lev_oc_f (int) , ecs_f,tcr_f (int)
 as explained in analysis_hist_<date>.py, if set to np.nan, then it is not yet in use.
 
-The order of the intergers in complex_f is as follows: 1. Dynamic Vegetation, 2. Other terrestrial biogeochemistry processes (tbgc), 3. Aerosols, 4. Atmospheric chemistry, 5. Ocean biogeochemistry (obgc), 6. Ice sheet dynamics, 0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive
+complex_f integers are for Dyn. Veg, other TBGC, AEROSOLS, CHEM., OBGC, ICE Sheet, 0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive
+tbgc = terrestrial biogeochemical processes
+obgc = oceanic biogeochemical processes
 
 If the metadata in the nc files (source_id argument) does not agree with the description in the article file, preference is given to the article information. If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
 
@@ -15,7 +16,7 @@ If the metadata in the nc files (source_id argument) does not agree with the des
 """
 
 def get_historical_metadata(model):
-    global mrun_f, family_f, cmip_f, rgb_f, marker_f, latres_atm_f, lonres_atm_f, lev_atm_f, latres_oc_f, lonres_oc_f, lev_oc_f, ecs_f, tcr_f
+    global mrun_f, complex_f, family_f, cmip_f, rgb_f, marker_f, latres_atm_f, lonres_atm_f, lev_atm_f, latres_oc_f, lonres_oc_f, lev_oc_f, ecs_f, tcr_f
     if model == 'access10':
         mrun_f = 'r1i1p1'
         family_f = 'gcm'
@@ -159,7 +160,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         obgc_f = 'MOM-L40v1'
         coupler_f = 'NCAR flux coupler version 5'
-        complex_f = '221020' #Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2, https://doi.org/10.5194/gmd-12-1573-2019
+        complex_f = '221120' ##Partly confirmed by Laurent Li, Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2, https://doi.org/10.5194/gmd-12-1573-2019
         addinfo_f = 'Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2'
         cmip_f = 5
         rgb_f = '#FF4500'
@@ -185,7 +186,7 @@ def get_historical_metadata(model):
         obgc_f = 'none'
         landice_f = 'none'
         coupler_f = 'NCAR flux coupler version 5'
-        complex_f = '221000' #Prognostic spatial CO2 in the atmosphere, https://doi.org/10.5194/gmd-12-1573-2019
+        complex_f = '221120' #Partly confirmed by Laurent Li, Prognostic spatial CO2 in the atmosphere, https://doi.org/10.5194/gmd-12-1573-2019
         addinfo_f = 'Prognostic spatial CO2 in the atmosphere'
         cmip_f = 6
         rgb_f = '#FF4500'
@@ -744,7 +745,7 @@ def get_historical_metadata(model):
         family_f = 'esm'
         doi_f = '10.1029/2019MS001829, 10.1029/2019MS002015'
         atmos_f = 'GFDL-AM4.0.1 (Cubed-sphere (c96) - 1 degree nominal horizontal resolution; 360 x 180 longitude/latitude; 33 levels; top level 1 hPa'
-        surface_f = 'GFDL-LM4.0.1 (1 degree nominal horizontal resolution; 360 x 180 longitude/latitude; 20 levels; bot level 10m); includes an interactive land carbon cycle, land:Veg:unnamed (dynamic vegetation, dynamic land use); land:Hydro:unnamed (soil water and ice, multi-layer snow, rivers and lakes)'
+        surface_f = 'GFDL-LM4.0.1 (1 degree nominal horizontal resolution; 360 x 180 longitude/latitude; 20 levels; bot level 10m); includes a purely diagnostic land carbon cycle, land:Veg:unnamed (dynamic vegetation, dynamic land use); land:Hydro:unnamed (soil water and ice, multi-layer snow, rivers and lakes)'
         ocean_f = 'GFDL-OM4p25 (GFDL-MOM6, tripolar - nominal 0.25 deg; 1440 x 1080 longitude/latitude; 75 levels; top grid cell 0-2 m)'
         seaice_f = 'GFDL-SIM4p25 (GFDL-SIS2.0, tripolar - nominal 0.25 deg; 1440 x 1080 longitude/latitude; 5 layers; 5 thickness categories)'
         aerosols_f = 'interactive'
@@ -752,7 +753,7 @@ def get_historical_metadata(model):
         obgc_f = 'GFDL-BLINGv2, purely diagnostic, not interactive'
         landice_f = 'none'
         coupler_f = 'unknown'
-        complex_f = '222210' #still needs to be confirmed by GFDL staff
+        complex_f = '212210' #still needs to be confirmed by GFDL staff
         addinfo_f = 'GFDL ID: 2019_0065'
         cmip_f = 6
         rgb_f = 'magenta'
@@ -960,7 +961,7 @@ def get_historical_metadata(model):
         obgc_f = 'PISCES (NEMOV2_3)'
         landice_f = 'none'
         coupler_f = 'OASIS'
-        complex_f = '221120' # commented by Olivier Boucher but still unclear
+        complex_f = '221110' # commented by Olivier Boucher but still unclear
         addinfo_f = 'This is the full carbon-cycle configuration of the IPSL-CM5A-LR model. It is however unclear wether CO2 concentrations or emissions were used for this model version (see Fig. 1c, d and pages 2133-34 in 0.1007/s00382-012-1636-1). Most likely, concentrations were used.'
         family_f = 'esm'
         cmip_f = 5
@@ -987,7 +988,7 @@ def get_historical_metadata(model):
         obgc_f = 'PISCES (NEMOV2_3)'
         landice_f = 'none'
         coupler_f = 'OASIS'
-        complex_f = '221120' # commented by Olivier Boucher but still unclear
+        complex_f = '221110' # commented by Olivier Boucher but still unclear
         addinfo_f = 'This is the full carbon-cycle configuration of the IPSL-CM5A-LR model. It is however unclear wether CO2 concentrations or emissions were used for this model version (see Fig. 1c, d and pages 2133-34 in 0.1007/s00382-012-1636-1). Most likely, concentrations were used.'
         cmip_f = 5
         rgb_f =  'grey'
@@ -1547,4 +1548,4 @@ def get_historical_metadata(model):
     else:
         raise Exception('Error: check entry for <model> !!')
     
-    return(mrun_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
+    return(mrun_f,complex_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
