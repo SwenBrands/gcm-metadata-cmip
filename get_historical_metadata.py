@@ -1502,7 +1502,7 @@ def get_historical_metadata(model):
         obgc_f = 'none'
         landice_f = 'none'
         coupler_f = ''
-        complex_f = '222000' #treatment of tbgc is unclear from the reference article, but normally taken into account by CLM4, needs to be confirmed yet
+        complex_f = '222000' #confirmed by Wei-Liang Lee, Research Center for Environmental Changes, Taiwan
         addinfo_f = 'based on CESM1.2.2, incorporating several innovative physical and chemical parameterizations'
         family_f = 'gcm'
         cmip_f = 6
