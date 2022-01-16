@@ -1005,11 +1005,11 @@ def get_historical_metadata(model):
         doi_f = '10.1029/2019MS002010'
         atmos_f = 'LMDZ (NPv6, N96; 144 x 143 longitude/latitude; 79 levels; top level 40000 m)'
         surface_f = 'ORCHIDEE (v2.0, Water/Carbon/Energy mode)'
-        ocean_f = 'NEMO-OPA (eORCA1.3, tripolar primarily 1deg; 362 x 332 longitude/latitude; 75 levels; top grid cell 0-2 m) '
+        ocean_f = 'NEMO3.6 (eORCA1.3, tripolar primarily 1deg; 362 x 332 longitude/latitude; 75 levels; top grid cell 0-2 m) '
         seaice_f = 'NEMO-LIM3'
         aerosols_f = ''
         chemistry_f = ''
-        obgc_f = 'NEMO-PISCES'
+        obgc_f = 'PISCESv2'
         landice_f = 'none'
         coupler_f = 'OASIS3‐MCT'
         complex_f = '221121' # commented by Olivier Boucher but still unclear
