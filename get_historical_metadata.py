@@ -19,7 +19,7 @@ vertical layers in the OGCM, ecs_f (int) and tcr_f (int) is the equilibrium clim
 Definitions and additional information:
 complex_f integers are for 1. Atmosphere, 2. Land-surface, 3. Ocean, 4. Sea-ice, 5. Vegetation properties, 6. Terrestrial biogeochemistry (tbgc),
 7. Aerosols, 8. Atmospheric chemistry, 9. Ocean biogeochemistry (obgc), 10. Ice sheet dynamics;
-0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive
+0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive and interacting with at least 1 other climate system component
 
 If the metadata in the nc files (source_id argument) does not agree with the description in the reference article(s), preference is given to the article information.
 If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
