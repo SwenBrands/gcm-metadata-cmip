@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""subfunction of <analysis_hist_<date>.py>; assigns metadata to historical cmip runs
+"""Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
 
 input = model name (string)
 
