@@ -19,7 +19,7 @@ latres_atm_f (int) is the number of latitudinal grid-boxes in the AGCM obtained 
 lonres_atm_f (int) is the number of longitudinal grid-boxes in the AGCM, lev_atm_f (int) the number of vertical layers in the AGCM,
 latres_oc_f (int) is the number of latitudinal grid-boxes in the AGCM, lonres_oc_f (int) is the number of longitudinal grid-boxes in the OGCM,
 lev_oc_f (int) is the number of vertical layers in the OGCM, ecs_f (int) and tcr_f (int) are the equilibrium climate sensitivity and transient climate response
-obtained from DOI: 10.1126/sciadv.aba198, if the information for a corresponding parameter could not be found or is not yet in use, then it is set to np.nan.
+obtained from DOI: 10.1126/sciadv.aba198; if the information for a corresponding parameter could not be found or is not yet in use, then it is set to np.nan.
 
 Definitions and additional information:
 complex_f integers are for 1. Atmosphere, 2. Land-surface, 3. Ocean, 4. Sea-ice, 5. Vegetation properties, 6. Terrestrial biogeochemistry (tbgc),
