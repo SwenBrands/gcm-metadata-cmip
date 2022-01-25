@@ -30,6 +30,12 @@ If the metadata in the nc files (source_id argument) does not agree with the des
 If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
 
 @Author: Swen Brands, MeteoGalicia - Xunta de Galicia, swen.brands@gmail.com
+
+@Contributors: Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
+Evgeny Volodin (INM, Russia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
+Thorsten Mauritsen (MPI, Germany), Øyvind Seland (Norwegian Meteorological Institute), Seiji Yukimoto (MRI, Japan), Klaus Wyser and Ralf Döscher (SMHI, Sweden),
+Annalisa Cherchie and Enrico Scoccimarro (CMCC, Italy), Aurore Voldoire and Roland Séférian (CNRM, France), Olivier Boucher (IPSL,France),
+Peter Gent (NCAR, USA), Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
 """
 
 def get_historical_metadata(model):
