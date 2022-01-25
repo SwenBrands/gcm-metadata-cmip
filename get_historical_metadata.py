@@ -31,7 +31,7 @@ If the complexity code was confirmed by a model developer, this is indicated by 
 
 @Author: Swen Brands, MeteoGalicia - Xunta de Galicia, swen.brands@gmail.com
 
-@Contributors: Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
+@Contributors: Jesús Fernández (UC, Spain), Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
 Evgeny Volodin (INM, Russia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
 Thorsten Mauritsen (MPI, Germany), Øyvind Seland (Norwegian Meteorological Institute), Seiji Yukimoto (MRI, Japan), Klaus Wyser and Ralf Döscher (SMHI, Sweden),
 Annalisa Cherchie and Enrico Scoccimarro (CMCC, Italy), Aurore Voldoire and Roland Séférian (CNRM, France), Olivier Boucher (IPSL,France),
