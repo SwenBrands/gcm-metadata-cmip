@@ -750,7 +750,7 @@ def get_historical_metadata(model):
         obgc_f = 'none'
         landice_f = 'none'
         coupler_f = 'unknown'
-        complex_f = '2222222200' #still needs to be confirmed by GFDL staff
+        complex_f = '2222222200' #confirmed by Guan Huo
         addinfo_f = 'none'
         cmip_f = 5
         rgb_f = 'magenta'
@@ -776,7 +776,7 @@ def get_historical_metadata(model):
         obgc_f = 'GFDL-BLINGv2, purely diagnostic, not interactive'
         landice_f = 'none'
         coupler_f = 'unknown'
-        complex_f = '2222212210' #still needs to be confirmed by GFDL staff
+        complex_f = '2222222210' #confirmed by Huan Guo, I formely set 2222212210 but was wrong on land carbon cycle processes
         addinfo_f = 'GFDL ID: 2019_0065'
         cmip_f = 6
         rgb_f = 'magenta'
