@@ -1571,4 +1571,4 @@ def get_historical_metadata(model):
     else:
         raise Exception('Error: check entry for <model> !!')
     
-return(mrun_f,doi_f,atmos_f,surface_f,ocean_f,seaice_f,aerosols_f,chemistry_f,obgc_f,landice_f,coupler_f,complex_f,addinfo_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
+    return(mrun_f,doi_f,atmos_f,surface_f,ocean_f,seaice_f,aerosols_f,chemistry_f,obgc_f,landice_f,coupler_f,complex_f,addinfo_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
