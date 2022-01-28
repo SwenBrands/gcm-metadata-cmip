@@ -752,7 +752,7 @@ def get_historical_metadata(model):
         obgc_f = 'none'
         landice_f = 'none'
         coupler_f = 'unknown'
-        complex_f = '2222222200' #confirmed by Guan Huo
+        complex_f = '2222222200' #confirmed by Huan Guo
         addinfo_f = 'none'
         cmip_f = 5
         rgb_f = 'magenta'
