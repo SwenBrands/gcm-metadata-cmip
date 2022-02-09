@@ -2,8 +2,10 @@
 
 def get_historical_metadata(model):
     
-    """Subfunction of <analysis_hist_<date>.py>; Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
+    """Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
+    
     Dependencies: numpy
+    
     input = name of the coupled model configuration (list of character strings), possible entries are (case-sensitive!):
     ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5',
     'cnrm_cm5','cnrm_cm6_1','cnrm_cm6_1_hr','cnrm_esm2_1','csiro_mk3_6_0','ec_earth','ec_earth3','ec_earth3_veg','ec_earth3_veg_lr','ec_earth3_aerchem',
