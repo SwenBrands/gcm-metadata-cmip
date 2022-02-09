@@ -507,21 +507,6 @@ def get_historical_metadata(model):
         lev_oc_f = 31
         ecs_f = 4.1
         tcr_f = 1.7
-    elif model == 'interim':
-        mrun_f = 'r1i1p1'
-        family_f = 'reanalysis'
-        cmip_f = np.nan
-        complex_f = np.nan
-        rgb_f = 'yellow'
-        marker_f = '$INT$'
-        latres_atm_f = np.nan
-        lonres_atm_f = np.nan
-        lev_atm_f = np.nan
-        latres_oc_f = np.nan
-        lonres_oc_f = np.nan
-        lev_oc_f = np.nan
-        ecs_f = np.nan
-        tcr_f = np.nan
     elif model == 'ec_earth':
         fullname_f = 'EC-EARTH 2.3 (2011)'
         mrun_f = 'r12i1p1'
@@ -1351,21 +1336,6 @@ def get_historical_metadata(model):
         lev_oc_f = 63 #from metadata in file
         ecs_f = 2.7
         tcr_f = 1.6
-    elif model == 'jra55':
-        mrun_f = 'r1i1p1'
-        family_f = 'reanalysis'
-        cmip_f = np.nan
-        complex_f = np.nan
-        rgb_f = '#B5651D'
-        marker_f = '$JRA$'
-        latres_atm_f = np.nan
-        lonres_atm_f = np.nan
-        lev_atm_f = np.nan
-        latres_oc_f = np.nan
-        lonres_oc_f = np.nan
-        lev_oc_f = np.nan
-        ecs_f = np.nan
-        tcr_f = np.nan
     elif model == 'mri_esm1':
         mrun_f = 'r1i1p1'
         doi_f = '10.11483/mritechrepo.64'
