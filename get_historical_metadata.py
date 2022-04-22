@@ -1239,7 +1239,7 @@ def get_historical_metadata(model):
     elif model == 'miroc5':
         mrun_f = 'r1i1p1'
         doi_f = '10.1175/2010JCLI3679.1'
-        atmos_f = 'MIROC-AGCM6 (T85L40)'
+        atmos_f = 'MIROC-AGCM5 (T85L40)'
         surface_f = 'MATSIRO (MATSIRO, L6)'
         ocean_f = 'COCO (COCO4.5, 256x224 L50)'
         seaice_f = 'COCO (COCO4.5)'
