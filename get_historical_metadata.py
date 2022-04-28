@@ -489,7 +489,7 @@ def get_historical_metadata(model):
         tcr_f = 1.9
     elif model == 'csiro_mk3_6_0':
         mrun_f = 'r1i1p1'
-        doi_f = 'https://publications.csiro.au/rpr/download?pid=procite:ff94db7e-ad41-40bf-b6be-2ab1ad07805c&dsid=DS1'
+        doi_f = '10.5194/acp-12-6377-2012,https://www.cawcr.gov.au/technical-reports/CTR_021.pdf,https://publications.csiro.au/rpr/download?pid=procite:ff94db7e-ad41-40bf-b6be-2ab1ad07805c&dsid=DS1'
         atmos_f = 'AGCM v7.3.8 (T63 spectral, 1.875 degrees EW x approx. 1.875 degrees NS, 18 levels)'
         surface_f = 'inhouse'
         ocean_f = 'GFDL MOM2.2 (1.875 degrees EW x approx. 0.9375 degrees NS, 31 levels) '
