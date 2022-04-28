@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 def get_historical_metadata(model):
-    
+
     """Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
-    
+
     Dependencies: numpy
-    
+
     input = name of the coupled model configuration (list of character strings), possible entries are (case-sensitive!):
     ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5',
     'cnrm_cm5','cnrm_cm6_1','cnrm_cm6_1_hr','cnrm_esm2_1','csiro_mk3_6_0','ec_earth','ec_earth3','ec_earth3_veg','ec_earth3_veg_lr','ec_earth3_aerchem',
     'ec_earth3_cc','fgoals_g2','fgoals_g3','gfdl_cm3','gfdl_cm4','gfdl_esm2g','gfdl_esm4','giss_e2_h','giss_e2_r','giss_e2_1_g','hadgem2_es','hadgem2_cc',
     'hadgem3_gc31_mm','iitm_esm','inm_cm4','ipsl_cm5a_lr','ipsl_cm5a_mr','ipsl_cm6a_lr','kiost_esm','miroc5','miroc6','miroc_esm','miroc_es2l','mpi_esm_lr',
     'mpi_esm_mr','mpi_esm_1_2_lr','mpi_esm_1_2_hr','mpi_esm_1_2_ham','mri_esm1','mri_esm2_0','nesm3','noresm1_m','noresm2_lm','noresm2_mm','sam0_unicon','taiesm1']
-    
+
     output = mrun_f (string) are the run specification, family_f (string) either gcm or esm, doi_f (string) points to reference article(s),
     atmos_f (string) to the AGCM, surface_f (string) to the land surface model, ocean_f (string) to the OGCM, seaice_f (string) to the sea-ice model,
     aersol_f (string) to the aerosol model, chemistry_f (string) to the atmospheric chemistry model(s) in the troposphere and stratosphere,
@@ -24,16 +24,16 @@ def get_historical_metadata(model):
     latres_oc_f (int) is the number of latitudinal grid-boxes in the AGCM, lonres_oc_f (int) is the number of longitudinal grid-boxes in the OGCM,
     lev_oc_f (int) is the number of vertical layers in the OGCM, ecs_f (int) and tcr_f (int) are the equilibrium climate sensitivity and transient climate response
     obtained from DOI: 10.1126/sciadv.aba198; if the information for a corresponding parameter could not be found or is not yet in use, then it is set to np.nan.
-    
+
     Definitions and additional information:
     complex_f integers are for 1. Atmosphere, 2. Land-surface, 3. Ocean, 4. Sea-ice, 5. Vegetation properties, 6. Terrestrial biogeochemistry (tbgc),
     7. Aerosols, 8. Atmospheric chemistry, 9. Ocean biogeochemistry (obgc), 10. Ice sheet dynamics;
     0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive and interacting with at least 1 other climate system component
     If the metadata in the nc files (source_id argument) does not agree with the description in the reference article(s), preference is given to the article information.
     If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
-    
+
     @Author: Swen Brands, MeteoGalicia - Xunta de Galicia, swen.brands@gmail.com
-    
+
     @Contributors: Jesús Fernández (UC, Spain), Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
     Evgeny Volodin (INM, Russia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
     Thorsten Mauritsen (MPI, Germany), Øyvind Seland (Norwegian Meteorological Institute), Seiji Yukimoto (MRI, Japan), Klaus Wyser and Ralf Döscher (SMHI, Sweden),
@@ -170,8 +170,8 @@ def get_historical_metadata(model):
         latres_oc_f = 3 #these are pseudo latlons for the unstructured grid containing 126859 wet nodes, confirmed by metadata and array in file
         lonres_oc_f = 42286
         lev_oc_f = 46
-        ecs_f = np.nan #not yet in use
-        tcr_f = np.nan
+        ecs_f = 3.29
+        tcr_f = 2.11
     elif model == 'bcc_csm1_1':
         mrun_f = 'r1i1p1'
         family_f = 'esm'
@@ -422,7 +422,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = ''
         complex_f = '2222101100' #provided by Aurore Voldoire
-        addinfo_f = '10.1029/2019MS001791, page 4186: The leaf area index (LAI) is not calculated as the result of the carbon balance of the leaves but prescribed from climatological ECOCLIMAP data (Faroux et al., 2013; Masson et al., 2003), involving that only the CO 2 effect on stomatal closure is represented (called the “antitranspiration” effect of CO 2 ). There are no land cover changes in CNRM‐CM6‐1, and the land cover distribution is fixed in time according to the ECOCLIMAP database (Table 2). This database includes climatological observations at high resolution over the 2000s, such as LAI, vegetation roughness length, snow‐free land surface albedo (Carrer et al., 2014), or soil textural properties, from the Harmonized World Soil Database at a 1‐km resolution (HWSD, 2012). More details on the physical processes represented in the ISBA‐CTRIP system can be found in Decharme et al. (2019)' 
+        addinfo_f = '10.1029/2019MS001791, page 4186: The leaf area index (LAI) is not calculated as the result of the carbon balance of the leaves but prescribed from climatological ECOCLIMAP data (Faroux et al., 2013; Masson et al., 2003), involving that only the CO 2 effect on stomatal closure is represented (called the “antitranspiration” effect of CO 2 ). There are no land cover changes in CNRM‐CM6‐1, and the land cover distribution is fixed in time according to the ECOCLIMAP database (Table 2). This database includes climatological observations at high resolution over the 2000s, such as LAI, vegetation roughness length, snow‐free land surface albedo (Carrer et al., 2014), or soil textural properties, from the Harmonized World Soil Database at a 1‐km resolution (HWSD, 2012). More details on the physical processes represented in the ISBA‐CTRIP system can be found in Decharme et al. (2019)'
         family_f = 'gcm'
         cmip_f = 6
         rgb_f = 'red'
@@ -1617,5 +1617,5 @@ def get_historical_metadata(model):
         tcr_f = 1.7
     else:
         raise Exception('Error: check entry for <model> !!')
-    
+
     return(mrun_f,complex_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
