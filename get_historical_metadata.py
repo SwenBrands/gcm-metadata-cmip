@@ -35,10 +35,10 @@ def get_historical_metadata(model):
     @Author: Swen Brands, MeteoGalicia - Xunta de Galicia, swen.brands@gmail.com
 
     @Contributors: Jesús Fernández (UC, Spain), Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
-    Evgeny Volodin (INM, Russia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
+    Evgeny Volodin (INM, Russia), Marc Collier, Dave Bi, Matthew Woodhouse and Tilo Ziehn (CSIRO, Australia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
     Thorsten Mauritsen (MPI, Germany), Øyvind Seland (Norwegian Meteorological Institute), Seiji Yukimoto (MRI, Japan), Klaus Wyser and Ralf Döscher (SMHI, Sweden),
     Annalisa Cherchie and Enrico Scoccimarro (CMCC, Italy), Aurore Voldoire and Roland Séférian (CNRM, France), Olivier Boucher (IPSL,France),
-    Peter Gent (NCAR, USA), Gavin A. Schmidt (GISS, USA), Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
+    Peter Gent (NCAR, USA), Gavin A. Schmidt (GISS, USA), Christoper Danek and Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
     """
 
     global mrun_f, complex_f, family_f, cmip_f, rgb_f, marker_f, latres_atm_f, lonres_atm_f, lev_atm_f, latres_oc_f, lonres_oc_f, lev_oc_f, ecs_f, tcr_f
