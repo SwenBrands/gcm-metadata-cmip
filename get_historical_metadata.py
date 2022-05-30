@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
 def get_historical_metadata(model):
-
+    
     """Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
-
     Dependencies: numpy
-
     input = name of the coupled model configuration (list of character strings), possible entries are (case-sensitive!):
-    ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5',
+    ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_hr4','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5',
     'cnrm_cm5','cnrm_cm6_1','cnrm_cm6_1_hr','cnrm_esm2_1','csiro_mk3_6_0','ec_earth','ec_earth3','ec_earth3_veg','ec_earth3_veg_lr','ec_earth3_aerchem',
     'ec_earth3_cc','fgoals_g2','fgoals_g3','gfdl_cm3','gfdl_cm4','gfdl_esm2g','gfdl_esm4','giss_e2_h','giss_e2_r','giss_e2_1_g','hadgem2_es','hadgem2_cc',
-    'hadgem3_gc31_mm','iitm_esm','inm_cm4','ipsl_cm5a_lr','ipsl_cm5a_mr','ipsl_cm6a_lr','kiost_esm','miroc5','miroc6','miroc_esm','miroc_es2l','mpi_esm_lr',
+    'hadgem3_gc31_mm','iitm_esm','inm_cm4','inm_cm5','ipsl_cm5a_lr','ipsl_cm5a_mr','ipsl_cm6a_lr','kiost_esm','miroc5','miroc6','miroc_esm','miroc_es2l','mpi_esm_lr',
     'mpi_esm_mr','mpi_esm_1_2_lr','mpi_esm_1_2_hr','mpi_esm_1_2_ham','mri_esm1','mri_esm2_0','nesm3','noresm1_m','noresm2_lm','noresm2_mm','sam0_unicon','taiesm1']
-
     output = mrun_f (string) are the run specification, family_f (string) either gcm or esm, doi_f (string) points to reference article(s),
     atmos_f (string) to the AGCM, surface_f (string) to the land surface model, ocean_f (string) to the OGCM, seaice_f (string) to the sea-ice model,
     aersol_f (string) to the aerosol model, chemistry_f (string) to the atmospheric chemistry model(s) in the troposphere and stratosphere,
@@ -24,25 +21,23 @@ def get_historical_metadata(model):
     latres_oc_f (int) is the number of latitudinal grid-boxes in the AGCM, lonres_oc_f (int) is the number of longitudinal grid-boxes in the OGCM,
     lev_oc_f (int) is the number of vertical layers in the OGCM, ecs_f (int) and tcr_f (int) are the equilibrium climate sensitivity and transient climate response
     obtained from DOI: 10.1126/sciadv.aba198; if the information for a corresponding parameter could not be found or is not yet in use, then it is set to np.nan.
-
     Definitions and additional information:
     complex_f integers are for 1. Atmosphere, 2. Land-surface, 3. Ocean, 4. Sea-ice, 5. Vegetation properties, 6. Terrestrial biogeochemistry (tbgc),
     7. Aerosols, 8. Atmospheric chemistry, 9. Ocean biogeochemistry (obgc), 10. Ice sheet dynamics;
     0 = absent, 1 = prescribed or non-interactive or semi-offline (in case of IPSL-CM5A or MPI-ESM1.2-HAM), 2 = interactive and interacting with at least 1 other climate system component
     If the metadata in the nc files (source_id argument) does not agree with the description in the reference article(s), preference is given to the article information.
     If the complexity code was confirmed by a model developer, this is indicated by a comment after the code
-
     @Author: Swen Brands, MeteoGalicia - Xunta de Galicia, swen.brands@gmail.com
-
     @Contributors: Jesús Fernández (UC, Spain), Jian Cao (NUIST, China), Bin Wang (IPRC, Hawaii), Laurent Li (LMD, France), Tongwen Wu (Beijing Climate Center, China),
-    Evgeny Volodin (INM, Russia), Marc Collier, Dave Bi, Matthew Woodhouse and Tilo Ziehn (CSIRO, Australia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
+    Evgeny Volodin (INM, Russia), Hiroaki Tatebe (JAMSTEC, Japan), Swapna Panickal (IITM, India), YoungHo Kim (Pukyong National University, Korea),
     Thorsten Mauritsen (MPI, Germany), Øyvind Seland (Norwegian Meteorological Institute), Seiji Yukimoto (MRI, Japan), Klaus Wyser and Ralf Döscher (SMHI, Sweden),
     Annalisa Cherchie and Enrico Scoccimarro (CMCC, Italy), Aurore Voldoire and Roland Séférian (CNRM, France), Olivier Boucher (IPSL,France),
-    Peter Gent (NCAR, USA), Gavin A. Schmidt (GISS, USA), Christoper Danek and Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
+    Peter Gent (NCAR, USA), Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
     """
 
     global mrun_f, complex_f, family_f, cmip_f, rgb_f, marker_f, latres_atm_f, lonres_atm_f, lev_atm_f, latres_oc_f, lonres_oc_f, lev_oc_f, ecs_f, tcr_f
     if model == 'access10':
+        fullname_f = 'ACCESS1-0 2011'
         mrun_f = 'r1i1p1'
         family_f = 'gcm'
         doi_f = '10.22499/2.6301.006, 10.22499/2.6301.004'
@@ -69,6 +64,7 @@ def get_historical_metadata(model):
         ecs_f = 3.8 #following Meehl et al. 2020 Sciences Advances, doi: 10.1126/sciadv.aba1981
         tcr_f = 1.9
     elif model == 'access13':
+        fullname_f = 'ACCESS1.3 2011'
         mrun_f = 'r1i1p1'
         family_f = 'gcm'
         doi_f = '10.22499/2.6301.006, 10.22499/2.6301.004, 10.1071/ES19040, 10.22499/2.6301.005'
@@ -95,6 +91,7 @@ def get_historical_metadata(model):
         ecs_f = 3.5
         tcr_ = 1.6
     elif model == 'access_cm2':
+        fullname_f = 'ACCESS-CM2 (2019)'
         mrun_f = 'r1i1p1f1'
         family_f = 'gcm'
         doi_f = '10.1071/ES19040'
@@ -121,6 +118,7 @@ def get_historical_metadata(model):
         ecs_f = 4.7
         tcr_f = 2.1
     elif model == 'access_esm1_5':
+        fullname_f = 'ACCESS-ESM1.5 (2019)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = '10.1071/ES19035, see Fig. 1 therein for an overview of all ACCESS models'
@@ -147,9 +145,10 @@ def get_historical_metadata(model):
         ecs_f = 3.9
         tcr_f = 2.0
     elif model == 'awi_esm_1_1_lr':
+        fullname_f = 'AWI-ESM 1.1 LR (2018)'
         mrun_f = 'r1i1p1f1'
         family_f = 'gcm'
-        doi_f = '10.1029/2019MS002009, 10.5194/acp-21-5015-2021, https://pure.mpg.de/rest/items/item_3279802_16/component/file_3316522/content'
+        doi_f = '10.1029/2019MS002009, 10.5194/acp-21-5015-2021, 10.1029/2021JC017633, https://pure.mpg.de/rest/items/item_3279802_16/component/file_3316522/content'
         atmos_f = 'ECHAM6.3.04p1 (T63L47 native atmosphere T63 gaussian grid; 192 x 96 longitude/latitude; 47 levels; top level 80 km)'
         surface_f = 'JSBACH 3.20 with dynamic vegetation'
         ocean_f = 'FESOM 1.4 (unstructured grid in the horizontal with 126859 wet nodes; 46 levels; top grid cell 0-5 m)'
@@ -162,7 +161,7 @@ def get_historical_metadata(model):
         complex_f = '2222220100' #provided by Christopher Danek
         addinfo_f = 'Tropospheric and stratospheric ozone is prescribed from the CMIP6 dataset (Checa-Garcia et al., 2018a). GHG concentrations including CO2, CH4, N2O, and chlorofluorocarbons (CFCs) are prescribed after Meinshausen et al. (2017). Methane oxidation and photolysis of water vapour are parameterized for the stratosphere and mesosphere (further information in Sect. 2.1.2 of Schmidt et al., 2013, and references therein)'
         cmip_f = 6
-        rgb_f = 'white' #white
+        rgb_f = 'white'
         marker_f = 'v'
         latres_atm_f = 96
         lonres_atm_f = 192
@@ -170,9 +169,10 @@ def get_historical_metadata(model):
         latres_oc_f = 3 #these are pseudo latlons for the unstructured grid containing 126859 wet nodes, confirmed by metadata and array in file
         lonres_oc_f = 42286
         lev_oc_f = 46
-        ecs_f = 3.29
-        tcr_f = 2.11
+        ecs_f = 3.29 #provided by Christopher Danek (source: Semmler et al. 2019, doi:10.1029/2021JC017633)
+        tcr_f = 2.11 # "
     elif model == 'bcc_csm1_1':
+        fullname_f = 'BCC-CSM1-1'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.5194/gmd-12-1573-2019, 10.1007/s13351-014-3041-7, 10.1002/jgrd.50320, 10.1007/s00382-008-0487-2'
@@ -199,6 +199,7 @@ def get_historical_metadata(model):
         ecs_f = 2.8
         tcr_f = 1.7
     elif model == 'bcc_csm2_mr':
+        fullname_f = 'BCC-CSM 2 MR (2017)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = 'https://doi.org/10.5194/gmd-12-1573-2019'
@@ -225,6 +226,7 @@ def get_historical_metadata(model):
         ecs_f = 3.0
         tcr_f = 1.7
     elif model == 'canesm2':
+        fullname_f = 'CanESM2 2010'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1029/2010GL046270'
@@ -251,6 +253,7 @@ def get_historical_metadata(model):
         ecs_f = 2.7
         tcr_f = 2.3
     elif model == 'canesm5':
+        fullname_f = 'CanESM5 (2019)'
         mrun_f = 'r1i1p2f1'
         family_f = 'esm'
         doi_f = 'doi.org/10.5194/gmd-12-4823-2019'
@@ -266,8 +269,9 @@ def get_historical_metadata(model):
         complex_f = '2222222121' #confirmed by Neil Swart
         addinfo_f = 'From e-mail correspondence with Neil Swart: vegetation, from the CTEM team: In CanESM5, the fractional coverage of PFTs were specified so vegetation could grow/change vertically in response to changes in climate (i.e. vegetation is interactive). However, since fractional coverage of PFTs were specified vegetation was NOT allowed to compete and move spatially. So competition was off. Typically, however, people use “dynamic vegetation” phrase to describe competition. From the CanAM team: For the aerosols in both models there are interactive tropospheric aerosols and prescribed stratospheric aerosols.  The same chemistry is used in CanESM2 and CanESM5, related to the sulphur cycle.  The full chemistry package is not in CanESM5.'
         cmip_f = 6
+        calendar_f = '365_day'
         rgb_f = 'white' #'#ff007f'
-        marker_f = 'v'
+        marker_f = 'o'
         latres_atm_f = 64
         lonres_atm_f = 128
         lev_atm_f = 49
@@ -277,6 +281,7 @@ def get_historical_metadata(model):
         ecs_f = 5.6
         tcr_f = 2.7
     elif model == 'ccsm4':
+        fullname_f = 'CCSM4'
         mrun_f = 'r6i1p1'
         family_f = 'gcm'
         doi_f = '10.1175/2011JCLI4083.1'
@@ -302,8 +307,8 @@ def get_historical_metadata(model):
         lev_oc_f = 60
         ecs_f = 2.9
         tcr_f = 1.7
-    elif model == 'cmcc_cm': #
-        fullname_f = 'Centro Euro-Mediterraneo per i Cambiamenti Climatici'
+    elif model == 'cmcc_cm': 
+        fullname_f = 'CMCC-CM, Euro-Mediterranean Centre on Climate Change coupled climate model'
         mrun_f = 'r1i1p1'
         doi_f = '10.1175/2011JCLI4104.1'
         atmos_f = 'ECHAM5 with a T159 horizontal resolution, Gaussian grid of about 0.75 x 0.75 degrees. This configuration has 31 hybrid sigma-pressure levels in the vertical and top at 10 hPa.'
@@ -330,7 +335,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'cmcc_cm2_sr5':
-        fullname_f = 'Euro-Mediterranean Centre on Climate Change coupled climate model'
+        fullname_f = 'CMCC-CM2-SR5 (2016)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.1029/2018MS001369'
         atmos_f = ' CAM5.3 (1deg; 288 x 192 longitude/latitude; 30 levels; top at ~2 hPa)'
@@ -353,6 +358,34 @@ def get_historical_metadata(model):
         lev_atm_f = 30
         latres_oc_f = 292
         lonres_oc_f = 362
+        lev_oc_f = 50
+        ecs_f = np.nan
+        tcr_f = np.nan
+    elif model == 'cmcc_cm2_hr4':
+        fullname_f = 'CMCC-CM2-HR4 (2016)'
+        mrun_f = 'r1i1p1f1'
+        doi_f = '10.1029/2018MS001369'
+        atmos_f = 'CAM4 (1deg; 288 x 192 longitude/latitude; 26 levels; top at ~2 hPa)'
+        surface_f = 'CLM4.5 (SP mode)'
+        ocean_f = 'NEMO3.6 (ORCA0.25 1/4 deg from the Equator degrading at the poles; 1442 x 1051 longitude/latitude; 50 vertical levels; top grid cell 0-1 m)'
+        seaice_f = 'CICE4.0'
+        aerosols_f = 'prescribed MACv2-SP'
+        chemistry_f = 'none'
+        obgc_f = 'none'
+        landice_f = 'none'
+        coupler_f = ''
+        complex_f = '2222001000' # yet has to be confirmed by Enrico Scoccimarro and Annalisa Cherchie
+        addinfo_f = 'Very high horizontal ocean resolution'
+        family_f = 'gcm'
+        cmip_f = 6
+        source_f = 'CMCC-CM2-HR4 (2016): \naerosol: prescribed MACv2-SP\natmos: CAM4 (1deg; 288 x 192 longitude/latitude; 26 levels; top at ~2 hPa)\natmosChem: none\nland: CLM4.5 (SP mode)\nlandIce: none\nocean: NEMO3.6 (ORCA0.25 1/4 deg from the Equator degrading at the poles; 1442 x 1051 longitude/latitude; 50 vertical levels; top grid cell 0-1 m)\nocnBgchem: none\nseaIce: CICE4.0'
+        rgb_f = 'cyan'
+        marker_f = '>'
+        latres_atm_f = 192
+        lonres_atm_f = 288
+        lev_atm_f = 26
+        latres_oc_f = 1051
+        lonres_oc_f = 1442
         lev_oc_f = 50
         ecs_f = np.nan
         tcr_f = np.nan
@@ -384,6 +417,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'cnrm_cm5':
+        fullname_f = 'CNRM-CM5 2010'
         mrun_f = 'r1i1p1'
         doi_f = '10.1007/s00382-011-1259-y'
         atmos_f = ' ARPEGE-Climat (V5.2.1, TL127L31), This is a spectral model that operates on a T127 triangular truncation within CNRM-CM5.1 (T63 for CNRM-CM3). All the physics and the calculations of the nonlinear terms require spectral transforms onto a reduced Gaussian grid (Hortal and Simmons 1991) equivalent to a spatial resolution of about 1.4 deg in both longitude and latitude. The dynamical core is based on a two time-level semi Lagrangian numerical integration scheme tagged as cycle 32 of the ARPEGE/IFS system'
@@ -399,6 +433,7 @@ def get_historical_metadata(model):
         addinfo_f = ''
         family_f = 'gcm'
         cmip_f = 5
+        calendar_f = 'gregorian'
         rgb_f = 'red'
         marker_f = 'P'
         latres_atm_f = 128
@@ -410,6 +445,7 @@ def get_historical_metadata(model):
         ecs_f = 3.3
         tcr_f = 2.0
     elif model == 'cnrm_cm6_1':
+        fullname_f = 'CNRM-CM6-1 (2017)'
         mrun_f = 'r1i1p1f2'
         doi_f = '10.1029/2019MS001683, 10.1029/2019MS001791'
         atmos_f = 'Arpege 6.3 (T127; Gaussian Reduced with 24572 grid points in total distributed over 128 latitude circles (with 256 grid points per latitude circle between 30 deg N and 30 deg S reducing to 20 grid points per latitude circle at 88.9degN and 88.9degS); 91 levels; top level 78.4 km)'
@@ -422,7 +458,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = ''
         complex_f = '2222101100' #provided by Aurore Voldoire
-        addinfo_f = '10.1029/2019MS001791, page 4186: The leaf area index (LAI) is not calculated as the result of the carbon balance of the leaves but prescribed from climatological ECOCLIMAP data (Faroux et al., 2013; Masson et al., 2003), involving that only the CO 2 effect on stomatal closure is represented (called the “antitranspiration” effect of CO 2 ). There are no land cover changes in CNRM‐CM6‐1, and the land cover distribution is fixed in time according to the ECOCLIMAP database (Table 2). This database includes climatological observations at high resolution over the 2000s, such as LAI, vegetation roughness length, snow‐free land surface albedo (Carrer et al., 2014), or soil textural properties, from the Harmonized World Soil Database at a 1‐km resolution (HWSD, 2012). More details on the physical processes represented in the ISBA‐CTRIP system can be found in Decharme et al. (2019)'
+        addinfo_f = '10.1029/2019MS001791, page 4186: The leaf area index (LAI) is not calculated as the result of the carbon balance of the leaves but prescribed from climatological ECOCLIMAP data (Faroux et al., 2013; Masson et al., 2003), involving that only the CO 2 effect on stomatal closure is represented (called the “antitranspiration” effect of CO 2 ). There are no land cover changes in CNRM‐CM6‐1, and the land cover distribution is fixed in time according to the ECOCLIMAP database (Table 2). This database includes climatological observations at high resolution over the 2000s, such as LAI, vegetation roughness length, snow‐free land surface albedo (Carrer et al., 2014), or soil textural properties, from the Harmonized World Soil Database at a 1‐km resolution (HWSD, 2012). More details on the physical processes represented in the ISBA‐CTRIP system can be found in Decharme et al. (2019)' 
         family_f = 'gcm'
         cmip_f = 6
         rgb_f = 'red'
@@ -436,6 +472,7 @@ def get_historical_metadata(model):
         ecs_f = 4.8
         tcr_f = 2.1
     elif model =='cnrm_cm6_1_hr':
+        fullname_f = 'CNRM-CM6-1-HR (2017)'
         mrun_f = 'r1i1p1f2'
         doi_f = '10.1029/2019MS001683, 10.1029/2019MS001791'
         atmos_f = 'Arpege 6.3 (T359; Gaussian Reduced with 181724 grid points in total distributed over 360 latitude circles (with 720 grid points per latitude circle between 32.2degN and 32.2degS reducing to 18 grid points per latitude circle at 89.6degN and 89.6degS); 91 levels; top level 78.4 km)'
@@ -462,6 +499,7 @@ def get_historical_metadata(model):
         ecs_f = 4.3
         tcr_f = 2.5
     elif model == 'cnrm_esm2_1':
+        fullname_f = 'CNRM-ESM2-1 (2017)'
         mrun_f = 'r1i1p1f2'
         doi_f = '10.1029/2019MS001791'
         atmos_f = 'Arpege 6.3 (T127; Gaussian Reduced with 24572 grid points in total distributed over 128 latitude circles (with 256 grid points per latitude circle between 30 deg N and 30 deg S reducing to 20 grid points per latitude circle at 88.9degN and 88.9degS); 91 levels; top level 78.4 km)'
@@ -488,8 +526,9 @@ def get_historical_metadata(model):
         ecs_f = 4.8
         tcr_f = 1.9
     elif model == 'csiro_mk3_6_0':
+        fullname_f = 'CSIRO-Mk3-6-0 2010'
         mrun_f = 'r1i1p1'
-        doi_f = '10.5194/acp-12-6377-2012,https://www.cawcr.gov.au/technical-reports/CTR_021.pdf,https://publications.csiro.au/rpr/download?pid=procite:ff94db7e-ad41-40bf-b6be-2ab1ad07805c&dsid=DS1'
+        doi_f = 'https://publications.csiro.au/rpr/download?pid=procite:ff94db7e-ad41-40bf-b6be-2ab1ad07805c&dsid=DS1'
         atmos_f = 'AGCM v7.3.8 (T63 spectral, 1.875 degrees EW x approx. 1.875 degrees NS, 18 levels)'
         surface_f = 'inhouse'
         ocean_f = 'GFDL MOM2.2 (1.875 degrees EW x approx. 0.9375 degrees NS, 31 levels) '
@@ -569,7 +608,7 @@ def get_historical_metadata(model):
         ecs_f = 4.3
         tcr_f = np.nan
     elif model == 'ec_earth3_veg_lr':
-        fullname_f = 'EC-Earth3-Veg (2019)'
+        fullname_f = 'EC-Earth3-Veg-LR (2019)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-2020-446'
         atmos_f = 'IFS cy36r4 (TL159, linearly reduced Gaussian grid equivalent to 320 x 160 longitude/latitude; 62 levels; top level 5 hPa)'
@@ -597,6 +636,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'ec_earth3_veg':
+        fullname_f = 'EC-Earth3-Veg (2019)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-2020-446'
         atmos_f = 'IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)'
@@ -652,6 +692,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'ec_earth3_cc':
+        fullname_f = 'EC-Earth3-CC (2019)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-2020-446'
         atmos_f = 'IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)'
@@ -679,6 +720,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'fgoals_g2':
+        fullname_f = 'FGOALS_g2 2011'
         mrun_f = 'r1i1p1'
         family_f = 'gcm'
         doi_f = 'ref. article: 10.1007/s00376-012-2140-6, CLM4: https://opensky.ucar.edu/islandora/object/technotes:493, CLM3: https://opensky.ucar.edu/islandora/object/technotes:393'
@@ -705,6 +747,7 @@ def get_historical_metadata(model):
         ecs_f = 3.4
         tcr_f = 1.4
     elif model == 'fgoals_g3':
+        fullname_f = 'FGOALS-g3 (2017)'
         mrun_f = 'r3i1p1f1'
         family_f = 'gcm'
         doi_f = 'ref. article: 10.1029/2019MS002012'
@@ -731,6 +774,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'gfdl_cm3':
+        fullname_f =' GFDL-CM3 2010'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1175/2011JCLI3964.1, 10.1175/2011JCLI3955.1'
@@ -786,6 +830,7 @@ def get_historical_metadata(model):
         ecs_f = 4.0
         tcr_f = 1.9
     elif model == 'gfdl_cm4':
+        fullname_f = 'GFDL-CM4 (2018)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = '10.1029/2019MS001829, 10.1029/2019MS002015'
@@ -840,6 +885,7 @@ def get_historical_metadata(model):
         ecs_f = 2.6
         tcr_f = 1.6
     elif model == 'giss_e2_h':
+        fullname_f = 'GISS-E2-H-Eh135f9f'        
         mrun_f = 'r6i1p1'
         family_f = 'gcm'
         doi_f = '10.1002/2013MS000266, 10.1002/2013MS000265, 10.1175/JCLI3612.1, 10.1016/j.ocemod.2013.01.008'
@@ -866,6 +912,7 @@ def get_historical_metadata(model):
         ecs_f = 2.3
         tcr_f = 1.7
     elif model == 'giss_e2_r':
+        fullname_f = 'GISS-E2-R'
         mrun_f = 'r6i1p1'
         family_f = 'gcm'
         doi_f = '10.1002/2013MS000266, 10.1002/2013MS000265, 10.1175/JCLI3612.1, 10.5194/bg-11-1137-2014'
@@ -892,6 +939,7 @@ def get_historical_metadata(model):
         ecs_f = 2.1
         tcr_f = 1.5
     elif model == 'giss_e2_1_g':
+        fullname_f = 'GISS-E2.1G (2016)'
         mrun_f = 'r1i1p1f1'
         family_f = 'gcm'
         doi_f = '10.1029/2019MS002025, 10.5194/bg-11-1137-2014, 10.1016/j.ocemod.2013.01.008, 10.1029/2019MS002030 for GISS ModelE2.1-G-CC (the carbon cycle version)'
@@ -918,6 +966,7 @@ def get_historical_metadata(model):
         ecs_f = 2.7
         tcr_f = 1.8
     elif model == 'hadgem2_cc':
+        fullname_f = 'HadGEM2-CC (2011)'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '0.5194/gmd-4-723-2011,0.5194/gmd-4-1051-2011'
@@ -944,6 +993,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'hadgem2_es':
+        fullname_f = 'HadGEM2-ES (2009)'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '0.5194/gmd-4-723-2011,0.5194/gmd-4-1051-2011'
@@ -970,6 +1020,7 @@ def get_historical_metadata(model):
         ecs_f = 4.6
         tcr_f = 2.5
     elif model == 'hadgem3_gc31_mm':
+        fullname_f = 'HadGEM3-GC31-MM (2016)'
         mrun_f = 'r1i1p1f3'
         family_f = 'gcm'
         doi_f = '10.5194/gmd-12-4999-2019'
@@ -996,23 +1047,26 @@ def get_historical_metadata(model):
         ecs_f = 5.4
         tcr_f = 2.6
     elif model == 'inm_cm4':
+        fullname_f = 'inmcm4 (2009)'
         mrun_f = 'r1i1p1'
         family_f = 'gcm'
         doi_f = '10.1134/S000143381004002X, 10.1175/JCLI-D-12-00831.1'
-        atmos_f = 'inhouse'
+        atmos_f = 'INM-AM'
         surface_f = 'inhouse'
         ocean_f = 'inhouse'
         seaice_f = 'inhouse'
         aerosols_f = 'none'
         chemistry_f = 'none'
-        obgc_f = 'unclear'
+        obgc_f = 'inhouse'
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222220010' #provided by Evgeny Volodin
         addinfo_f = 'Includes interactive carbon and methane cycles over land, but the representation of ocean biogeochemistry is unclear.'
+        source_f = 'inmcm4 (2009)'
         cmip_f = 5
-        rgb_f = 'white'
-        marker_f = '*'
+        calendar_f = '365_day'
+        rgb_f = '#D3D3D3'
+        marker_f = 'P'
         latres_atm_f = 120
         lonres_atm_f = 180
         lev_atm_f = 21
@@ -1021,7 +1075,37 @@ def get_historical_metadata(model):
         lev_oc_f = 40
         ecs_f = 2.1
         tcr_f = 1.3
+    elif model == 'inm_cm5':
+        fullname_f = 'INM-CM5-0 (2016)'
+        mrun_f = 'r2i1p1f1'
+        family_f = 'gcm'
+        doi_f = '10.1134/S0001433817020128, 10.5194/esd-9-1235-2018, 10.1007/s00382-017-3539-7'
+        atmos_f = 'INM-AM5-0'
+        surface_f = 'INM-LND1'
+        ocean_f = 'INM-OM5'
+        seaice_f = 'INM-ICE1'
+        aerosols_f = 'INM-AER1'
+        chemistry_f = 'none'
+        obgc_f = 'inhouse'
+        landice_f = 'none'
+        coupler_f = 'inhouse'
+        complex_f = '2222222010' #still has to be confirmed by Evgeny Volodin
+        addinfo_f = 'interactive aerosol component'
+        source_f = 'INM-CM5-0 (2016): \naerosol: INM-AER1\natmos: INM-AM5-0 (2x1.5; 180 x 120 longitude/latitude; 73 levels; top level sigma = 0.0002)\natmosChem: none\nland: INM-LND1\nlandIce: none\nocean: INM-OM5 (North Pole shifted to 60N, 90E. 0.5x0.25; 720 x 720 longitude/latitude; 40 levels; vertical sigma coordinate)\nocnBgchem: none\nseaIce: INM-ICE1'
+        cmip_f = 6
+        calendar_f = '365_day'
+        rgb_f = '#D3D3D3'
+        marker_f = 'X'
+        latres_atm_f = 120
+        lonres_atm_f = 180
+        lev_atm_f = 73
+        latres_oc_f = 720
+        lonres_oc_f = 720
+        lev_oc_f = 40
+        ecs_f = 1.9
+        tcr_f = np.nan
     elif model == 'ipsl_cm5a_lr':
+        fullname_f = 'IPSL-CM5A-LR (2010)'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1007/s00382-012-1636-1'
@@ -1050,6 +1134,7 @@ def get_historical_metadata(model):
         ecs_f = 4.1
         tcr_f = 2.0
     elif model == 'ipsl_cm5a_mr':
+        fullname_f = 'IPSL-CM5A-MR (2010)'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1007/s00382-012-1636-1'
@@ -1077,6 +1162,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = 2.0
     elif model == 'ipsl_cm6a_lr':
+        fullname_f = 'IPSL-CM6A-LR (2017)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = '10.1029/2019MS002010'
@@ -1102,7 +1188,65 @@ def get_historical_metadata(model):
         lev_oc_f = 75
         ecs_f = 4.6
         tcr_f = 2.3
+    elif model == 'kace_1_0_g':
+        fullname_f = 'KACE1.0-G (2018)'
+        institution_f = 'National Institute of Meteorological Sciences-Korea Meteorological Administration (NIMS-KMA)'
+        mrun_f = 'r1i1p1f1'
+        doi_f = '10.1007/s13143-021-00225-6, 10.1007/s13143-019-00144-7'
+        atmos_f = 'MetUM-HadGEM3-GA7.1 (N96; 192 x 144 longitude/latitude; 85 levels; top level 85 km)'
+        surface_f = 'JULES-HadGEM3-GL7.1'
+        ocean_f = 'MOM4p1 (tripolar primarily 1deg; 360 x 200 longitude/latitude; 50 levels; top grid cell 0-10 m)'
+        seaice_f = 'JULES-HadGEM3-GL7.1'
+        aerosols_f = 'UKCA-GLOMAP-mode'
+        chemistry_f = 'none'
+        obgc_f = 'none'
+        landice_f = 'none'
+        coupler_f = 'OASIS3-MCT'
+        complex_f = '2222222000' #yet has to be confirmed
+        addinfo_f = 'physics_index: 1, realization_index: 1'
+        family_f = 'gcm'
+        cmip_f = 6
+        calendar_f = '360_day'
+        source_f = 'KACE1.0-G (2018): \naerosol: UKCA-GLOMAP-mode\natmos: MetUM-HadGEM3-GA7.1 (N96; 192 x 144 longitude/latitude; 85 levels; top level 85 km)\natmosChem: none\nland: JULES-HadGEM3-GL7.1\nlandIce: none\nocean: MOM4p1 (tripolar primarily 1deg; 360 x 200 longitude/latitude; 50 levels; top grid cell 0-10 m)\nocnBgchem: none\nseaIce: CICE-HadGEM3-GSI8 (tripolar primarily 1deg; 360 x 200 longitude/latitude)'
+        rgb_f = 'white'
+        marker_f = '<'
+        latres_atm_f = 144
+        lonres_atm_f = 192
+        lev_atm_f = 85
+        latres_oc_f = 200
+        lonres_oc_f = 360
+        lev_oc_f = 50
+        ecs_f = np.nan
+        tcr_f = np.nan
+    elif model == 'kiost_esm':
+        fullname_f = 'KIOST-ESM (2018)'
+        mrun_f = 'r1i1p1f1'
+        doi_f = '10.1007/s12601-021-00001-7'
+        atmos_f = 'GFDL-AM2.0 (cubed sphere (C48); 192 x 96 longitude/latitude; 32 vertical levels; top level 2 hPa)'
+        surface_f = 'NCAR-CLM4'
+        ocean_f = 'GFDL-MOM5.0 (tripolar - nominal 1.0 deg; 360 x 200 longitude/latitude; 52 levels; top grid cell 0-2 m; NK mixed layer scheme)'
+        seaice_f = 'GFDL-SIS'
+        aerosols_f = 'none'
+        chemistry_f = 'Simple carbon aerosol model (emission type)'
+        obgc_f = 'TOPAZ2'
+        landice_f = 'none'
+        coupler_f = ''
+        complex_f = '2222221120' #provided by YoungHo Kim
+        addinfo_f = ' based on a low-resolution version of the Geophysical Fluid Dynamics Laboratory Climate Model version 2.5. he main changes made to the base model include using new cumulus convection and ocean mixed layer parameterization schemes, which improve the model fidelity significantly. In addition, the KIOST-ESM adopts dynamic vegetation and new soil respiration schemes in its land model component.'
+        family_f = 'esm'
+        cmip_f = 6
+        rgb_f = 'white'
+        marker_f = 's'
+        latres_atm_f = 96
+        lonres_atm_f = 192
+        lev_atm_f = 32
+        latres_oc_f = 200
+        lonres_oc_f = 360
+        lev_oc_f = 52
+        ecs_f = np.nan
+        tcr_f = np.nan
     elif model == 'mpi_esm_lr':
+        fullname_f = 'MPI-ESM-LR 2011'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1002/jame.20038, 10.1029/2012MS000154'
@@ -1129,6 +1273,7 @@ def get_historical_metadata(model):
         ecs_f = 3.6
         tcr_f = 2.0
     elif model == 'mpi_esm_mr':
+        fullname_f = 'MPI-ESM-MR 2011'
         mrun_f = 'r1i1p1'
         family_f = 'esm'
         doi_f = '10.1002/jame.20038, 10.1029/2012MS000154'
@@ -1156,6 +1301,7 @@ def get_historical_metadata(model):
         ecs_f = 3.5
         tcr_f = 2.0
     elif model == 'mpi_esm_1_2_lr':
+        fullname_f = 'MPI-ESM1.2-LR (2017)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = '10.1029/2018MS001400'
@@ -1183,6 +1329,7 @@ def get_historical_metadata(model):
         ecs_f = 3.0
         tcr_f = 1.8
     elif model == 'mpi_esm_1_2_ham':
+        fullname_f = 'MPI-ESM1.2-HAM (2017)'
         mrun_f = 'r1i1p1f1'
         family_f = 'esm'
         doi_f = '10.5194/gmd-12-1643-2019, 10.5194/gmd-2018-307'
@@ -1210,6 +1357,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'mpi_esm_1_2_hr':
+        fullname_f = 'MPI-ESM1.2-HR (2017)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.1029/2018MS001400, 10.5194/gmd-12-3241-2019'
         atmos_f = 'ECHAM6.3 (spectral T127; 384 x 192 longitude/latitude; 95 levels; top level 0.01 hPa)'
@@ -1237,6 +1385,7 @@ def get_historical_metadata(model):
         ecs_f = 3.0
         tcr_f = 1.7
     elif model == 'miroc5':
+        fullname_f = 'MIROC5 2010'
         mrun_f = 'r1i1p1'
         doi_f = '10.1175/2010JCLI3679.1'
         atmos_f = 'MIROC-AGCM5 (T85L40)'
@@ -1263,6 +1412,7 @@ def get_historical_metadata(model):
         ecs_f = 2.7
         tcr_f = 1.4
     elif model == 'miroc_esm':
+        fullname_f = 'MIROC-ESM 2010'
         mrun_f = 'r1i1p1'
         doi_f = '10.5194/gmd-4-845-2011'
         atmos_f = 'MIROC-AGCM (MIROC-AGCM 2010, T42L80)'
@@ -1290,6 +1440,7 @@ def get_historical_metadata(model):
         ecs_f = 4.7
         tcr_f = 2.2
     elif model == 'miroc6':
+        fullname_f = 'MIROC6 (2017)'
         mrun_f = 'r3i1p1f1'
         doi_f = '10.5194/gmd-12-2727-2019'
         atmos_f = 'CCSR AGCM (T85; 256 x 128 longitude/latitude; 81 levels; top level 0.004 hPa)'
@@ -1317,6 +1468,7 @@ def get_historical_metadata(model):
         ecs_f = 2.6
         tcr_f = 1.6
     elif model == 'miroc_es2l':
+        fullname_f = 'MIROC-ES2L (2018)'
         mrun_f = 'r5i1p1f2'
         doi_f = '10.5194/gmd-13-2197-2020'
         atmos_f = ' CCSR AGCM (T42; 128 x 64 longitude/latitude; 40 levels; top level 3 hPa)'
@@ -1343,6 +1495,7 @@ def get_historical_metadata(model):
         ecs_f = 2.7
         tcr_f = 1.6
     elif model == 'mri_esm1':
+        fullname_f = 'MRI-ESM1 2011'
         mrun_f = 'r1i1p1'
         doi_f = '10.11483/mritechrepo.64'
         atmos_f = 'GSMUV (gsmuv-110120oc, TL159L48)'
@@ -1369,6 +1522,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'mri_esm2_0':
+        fullname_f = 'MRI-ESM2.0 (2017)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.2151/jmsj.2019-051'
         atmos_f = 'MRI-AGCM3.5 (TL159; 320 x 160 longitude/latitude; 80 levels; top level 0.01 hPa)'
@@ -1398,6 +1552,7 @@ def get_historical_metadata(model):
         ecs_f = np.nan
         tcr_f = np.nan
     elif model == 'noresm1_m':
+        fullname_f = 'NorESM1-M 2011'
         mrun_f = 'r1i1p1'
         doi_f = '10.5194/gmd-6-687-2013'
         atmos_f = 'CAM-Oslo (CAM4-Oslo-noresm-ver1_cmip5-r112, f19L26)'
@@ -1426,6 +1581,7 @@ def get_historical_metadata(model):
         ecs_f = 2.8
         tcr_f = 1.4
     elif model == 'noresm2_lm':
+        fullname_f = 'NorESM2-LM (2017)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-6-687-2013'
         atmos_f = 'CAM-OSLO (2 degree resolution; 144 x 96; 32 levels; top level 3 mb), based on CAM6'
@@ -1454,6 +1610,7 @@ def get_historical_metadata(model):
         tcr_f = 1.5
         co2_f = 'concentrations' #concentrations or emissions
     elif model == 'noresm2_mm':
+        fullname_f = 'NorESM2-MM (2017)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-6-687-2013'
         atmos_f = 'CAM-OSLO (1 degree resolution; 288 x 192; 32 levels; top level 3 mb), based on CAM6'
@@ -1482,6 +1639,7 @@ def get_historical_metadata(model):
         tcr_f = np.nan
         co2_f = 'concentrations'
     elif model == 'nesm3': #v3
+        fullname_f = 'NESM v3 (2016)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.5194/gmd-11-2975-2018'
         atmos_f = 'ECHAM v6.3 (T63; 192 x 96)'
@@ -1509,6 +1667,7 @@ def get_historical_metadata(model):
         ecs_f = 4.7
         tcr_f = 2.7
     elif model == 'sam0_unicon': #v2017
+        fullname_f = 'SAM0-UNICON (2017)'
         mrun_f = 'r1i1p1f1'
         doi_f = '10.1175/JCLI-D-18-0796.1'
         atmos_f = 'CAM5.3 with UNICON (1deg; 288 x 192 longitude/latitude; 30 levels; top level ~2 hPa)'
@@ -1534,33 +1693,6 @@ def get_historical_metadata(model):
         lev_oc_f = 60
         ecs_f = 3.7
         tcr_f = 2.3
-    elif model == 'kiost_esm':
-        fullname_f = 'KIOST-ESM (2018)'
-        mrun_f = 'r1i1p1f1'
-        doi_f = '10.1007/s12601-021-00001-7'
-        atmos_f = 'GFDL-AM2.0 (cubed sphere (C48); 192 x 96 longitude/latitude; 32 vertical levels; top level 2 hPa)'
-        surface_f = 'NCAR-CLM4'
-        ocean_f = 'GFDL-MOM5.0 (tripolar - nominal 1.0 deg; 360 x 200 longitude/latitude; 52 levels; top grid cell 0-2 m; NK mixed layer scheme)'
-        seaice_f = 'GFDL-SIS'
-        aerosols_f = 'none'
-        chemistry_f = 'Simple carbon aerosol model (emission type)'
-        obgc_f = 'TOPAZ2'
-        landice_f = 'none'
-        coupler_f = ''
-        complex_f = '2222221120' #provided by YoungHo Kim
-        addinfo_f = ' based on a low-resolution version of the Geophysical Fluid Dynamics Laboratory Climate Model version 2.5. he main changes made to the base model include using new cumulus convection and ocean mixed layer parameterization schemes, which improve the model fidelity significantly. In addition, the KIOST-ESM adopts dynamic vegetation and new soil respiration schemes in its land model component.'
-        family_f = 'esm'
-        cmip_f = 6
-        rgb_f = 'white'
-        marker_f = 's'
-        latres_atm_f = 96
-        lonres_atm_f = 192
-        lev_atm_f = 32
-        latres_oc_f = 200
-        lonres_oc_f = 360
-        lev_oc_f = 52
-        ecs_f = np.nan
-        tcr_f = np.nan
     elif model == 'taiesm1':
         fullname_f = 'TaiESM 1.0 (2018), based on CAM5.3'
         mrun_f = 'r1i1p1f1'
@@ -1617,5 +1749,5 @@ def get_historical_metadata(model):
         tcr_f = 1.7
     else:
         raise Exception('Error: check entry for <model> !!')
-
+    
     return(mrun_f,complex_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
