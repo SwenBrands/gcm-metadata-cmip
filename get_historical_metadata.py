@@ -34,7 +34,7 @@ def get_historical_metadata(model):
     Annalisa Cherchie and Enrico Scoccimarro (CMCC, Italy), Aurore Voldoire and Roland Séférian (CNRM, France), Olivier Boucher (IPSL,France),
     Peter Gent (NCAR, USA), Tido Semmler (AWI, Germany), Gill Martin (Met Office, UK), Ina Tegen (TROPOS, Germany) and Huan Guo (NOAA, USA)
     """
-
+    import numpy as np
     global mrun_f, complex_f, family_f, cmip_f, rgb_f, marker_f, latres_atm_f, lonres_atm_f, lev_atm_f, latres_oc_f, lonres_oc_f, lev_oc_f, ecs_f, tcr_f
     if model == 'access10':
         fullname_f = 'ACCESS1-0 2011'
@@ -51,6 +51,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3.25'
         complex_f = '2222002000' #provided by Dave Bi, Tilo Ziehn and Matt Woodhouse
+        contact_f = 'Dave Bi, Tilo Ziehn and Matt Woodhouse'
         addinfo_f = 'this is the basic ACCESS model version with atmospheric physics from HadGEM2(r1.1). Note that while MOSES and CABLE are both able to calculate carbon fluxes, these have not been assessed or submitted for the ACCESS1.0 and ACCESS1.3 simulations.'
         cmip_f = 5
         rgb_f = 'blue' #blue
@@ -78,6 +79,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3.25'
         complex_f = '2222002000' #provided by Dave Bi, Tilo Ziehn and Matt Woodhouse
+        contact_f = 'Dave Bi, Tilo Ziehn and Matt Woodhouse'
         addinfo_f = 'This was the aspirational ACCESS model version used in CMIP5. It was a key step on the way to attaining a full earth system model as laid out in the original ACCESS project plan. Note that while MOSES and CABLE are both able to calculate carbon fluxes, these have not been assessed or submitted for the ACCESS1.0 and ACCESS1.3 simulations.'
         cmip_f = 5
         rgb_f = 'blue'
@@ -105,6 +107,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CERFACS OASIS3-MCT'
         complex_f = '2222002000' #provided by Dave Bi, Tilo Ziehn and Matt Woodhouse
+        contact_f = 'Dave Bi, Tilo Ziehn and Matt Woodhouse'
         addinfo_f = 'Includes a non-interactive ice-sheet representation. It should be noted that ACCESS-CM2 continues to utilise JULES representations for some terrestrial processes, particularly dust source/deposition and river routing'
         cmip_f = 6
         rgb_f = 'blue'
@@ -132,6 +135,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS-MCT'
         complex_f = '2222122020' #provided by Dave Bi, Tilo Ziehn and Matt Woodhouse
+        contact_f = 'Dave Bi, Tilo Ziehn and Matt Woodhouse'
         addinfo_f = 'It should be noted that ACCESS-CM2 continues to utilise JULES representations for some terrestrial processes, particularly dust source/deposition and river routing'
         cmip_f = 6
         rgb_f = 'blue'
@@ -159,6 +163,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222220100' #provided by Christopher Danek
+        contact_f = 'Christopher Danek'
         addinfo_f = 'Tropospheric and stratospheric ozone is prescribed from the CMIP6 dataset (Checa-Garcia et al., 2018a). GHG concentrations including CO2, CH4, N2O, and chlorofluorocarbons (CFCs) are prescribed after Meinshausen et al. (2017). Methane oxidation and photolysis of water vapour are parameterized for the stratosphere and mesosphere (further information in Sect. 2.1.2 of Schmidt et al., 2013, and references therein)'
         cmip_f = 6
         rgb_f = 'white'
@@ -186,6 +191,7 @@ def get_historical_metadata(model):
         obgc_f = 'MOM-L40v1'
         coupler_f = 'NCAR flux coupler version 5'
         complex_f = '2222221120' #Confirmed by Tongwen Wu and Laurent Li, Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2, https://doi.org/10.5194/gmd-12-1573-2019
+        contact_f= 'Tongwen Wu and Laurent Li'
         addinfo_f = 'Global carbon budget without spatial distribution, Oceanic carbon cycle based on OCMIP2'
         cmip_f = 5
         rgb_f = '#FF4500'
@@ -213,6 +219,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'NCAR flux coupler version 5'
         complex_f = '2222221120' #Confirmed by Tongwen Wu and Laurent Li, Prognostic spatial CO2 in the atmosphere, https://doi.org/10.5194/gmd-12-1573-2019
+        contact_f= 'Tongwen Wu and Laurent Li'
         addinfo_f = 'Prognostic spatial CO2 in the atmosphere'
         cmip_f = 6
         rgb_f = '#FF4500'
@@ -240,6 +247,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222222021' #confirmed by Neil Swart
+        contact_f= 'Neil Swart'
         addinfo_f = 'From e-mail correspondence with Neil Swart: From the CanAM team: For the aerosols in both models there are interactive tropospheric aerosols and prescribed stratospheric aerosols.  The same chemistry is used in CanESM2 and CanESM5, related to the sulphur cycle.  The full chemistry package is not in CanESM5.'
         cmip_f = 5
         rgb_f = 'white'
@@ -267,6 +275,7 @@ def get_historical_metadata(model):
         landice_f = 'specified ice sheets'
         coupler_f = 'inhouse'
         complex_f = '2222222121' #confirmed by Neil Swart
+        contact_f= 'Neil Swart'
         addinfo_f = 'From e-mail correspondence with Neil Swart: vegetation, from the CTEM team: In CanESM5, the fractional coverage of PFTs were specified so vegetation could grow/change vertically in response to changes in climate (i.e. vegetation is interactive). However, since fractional coverage of PFTs were specified vegetation was NOT allowed to compete and move spatially. So competition was off. Typically, however, people use “dynamic vegetation” phrase to describe competition. From the CanAM team: For the aerosols in both models there are interactive tropospheric aerosols and prescribed stratospheric aerosols.  The same chemistry is used in CanESM2 and CanESM5, related to the sulphur cycle.  The full chemistry package is not in CanESM5.'
         cmip_f = 6
         calendar_f = '365_day'
@@ -295,6 +304,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL7'
         complex_f = '2222221000' #confirmed by Peter Gent
+        contact_f= 'Peter Gent'
         addinfo_f = ''
         cmip_f = 5
         rgb_f = 'white'
@@ -321,6 +331,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'Ocean Atmosphere Sea Ice Soil version 3 (OASIS3)'
         complex_f = '2222000000' # # confirmed by Enrico Scoccimarro and Annalisa Cherchie
+        contact_f= 'Annalisa Cherchie and Enrico Scoccimarro'
         addinfo_f = 'model described in the documentation at http://www.cmcc.it/data-models/models'
         family_f = 'gcm'
         cmip_f = 5
@@ -348,6 +359,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL v7'
         complex_f = '2222002000' # # confirmed by Enrico Scoccimarro and Annalisa Cherchie
+        contact_f= 'Annalisa Cherchie and Enrico Scoccimarro'
         addinfo_f = 'In CMCC-CM2, land carbon (C) and nitrogen (N) cycles are activated with the idea to have a better representation of the land surface and vegetation, with a more realistic interaction with the atmosphere. However, the dynamic vegetation module is not active: vegetation can grow, shrink, or die thanks to the interaction with climate and nutrients, but plant functional types, representing vegetation types in each grid cell, are constant. Thus, vegetation types cannot change in response to modified climate conditions.'
         family_f = 'gcm'
         cmip_f = 6
@@ -375,6 +387,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = ''
         complex_f = '2222001000' # yet has to be confirmed by Enrico Scoccimarro and Annalisa Cherchie
+        contact_f= 'yet has to be confirmed by Enrico Scoccimarro and Annalisa Cherchie !'
         addinfo_f = 'Very high horizontal ocean resolution'
         family_f = 'gcm'
         cmip_f = 6
@@ -403,6 +416,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL v7'
         complex_f = '2222022020' # confirmed by Enrico Scoccimarro and Annalisa Cherchie
+        contact_f= 'Annalisa Cherchie and Enrico Scoccimarro'
         addinfo_f = 'For this model version, it is unclear whether vegetation is dynamic or not.'
         family_f = 'esm'
         cmip_f = 6
@@ -430,6 +444,7 @@ def get_historical_metadata(model):
         landice_f = 'Pseudo calving of the Greenland and Antarctic ice sheets, see pages 2094 and 2099 in 10.1007/s00382-011-1259-y'
         coupler_f = 'OASIS 3'
         complex_f = '2222101100' #provided by Aurore Voldoire
+        contact_f= 'Aurore Voldoire'
         addinfo_f = ''
         family_f = 'gcm'
         cmip_f = 5
@@ -458,6 +473,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = ''
         complex_f = '2222101100' #provided by Aurore Voldoire
+        contact_f= 'Aurore Voldoire'
         addinfo_f = '10.1029/2019MS001791, page 4186: The leaf area index (LAI) is not calculated as the result of the carbon balance of the leaves but prescribed from climatological ECOCLIMAP data (Faroux et al., 2013; Masson et al., 2003), involving that only the CO 2 effect on stomatal closure is represented (called the “antitranspiration” effect of CO 2 ). There are no land cover changes in CNRM‐CM6‐1, and the land cover distribution is fixed in time according to the ECOCLIMAP database (Table 2). This database includes climatological observations at high resolution over the 2000s, such as LAI, vegetation roughness length, snow‐free land surface albedo (Carrer et al., 2014), or soil textural properties, from the Harmonized World Soil Database at a 1‐km resolution (HWSD, 2012). More details on the physical processes represented in the ISBA‐CTRIP system can be found in Decharme et al. (2019)' 
         family_f = 'gcm'
         cmip_f = 6
@@ -485,6 +501,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = ''
         complex_f = '2222101100' #provided by Aurore Voldoire
+        contact_f= 'Aurore Voldoire'
         addinfo_f = ''
         family_f = 'gcm'
         cmip_f = 6
@@ -512,6 +529,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = ''
         complex_f = '2222222220' #provided by Aurore Voldoire under the assumption that interactive stratospheric chemistry only (i.e. tropospheric chemistriy is not interactive) merits a 2
+        contact_f= 'Aurore Voldoire'
         addinfo_f = 'The included Earth system components are described on pages 4186-4187. See also Table 2. CNRM‐ESM‐2. CNRM‐ESM 2 adds interactive aerosols, stratospheric chemistry, land carbon feedbacks, and ocean biogeochemistry upon CNRM‐CM6‐1 (http://www.umr‐cnrm.fr/cmip6/references). The carbon balance of the leaves controls the vegetation phenology and the LAI as detailed in Gibelin et al. (2006).'
         family_f = 'esm'
         cmip_f = 6
@@ -539,6 +557,7 @@ def get_historical_metadata(model):
         landice_f = ''
         coupler_f = 'inhouse'
         complex_f = '2222000000'
+        contact_f= 'Yet has to be confirmed by CSIRO staff'
         addinfo_f = ''
         family_f = 'gcm'
         cmip_f = 5
@@ -552,6 +571,21 @@ def get_historical_metadata(model):
         lev_oc_f = 31
         ecs_f = 4.1
         tcr_f = 1.7
+    elif model == 'interim':
+        mrun_f = 'r1i1p1'
+        family_f = 'reanalysis'
+        cmip_f = 1 #this is a fake score in order to be able to work with reanlaysis datasets as if they were GCMs in analysis_hist.py
+        complex_f = '1111111111' #this is a fake score in order to be able to work with reanlaysis datasets as if they were GCMs in analysis_hist.py
+        rgb_f = 'yellow'
+        marker_f = '$INT$'
+        latres_atm_f = np.nan
+        lonres_atm_f = np.nan
+        lev_atm_f = np.nan
+        latres_oc_f = np.nan
+        lonres_oc_f = np.nan
+        lev_oc_f = np.nan
+        ecs_f = np.nan
+        tcr_f = np.nan
     elif model == 'ec_earth':
         fullname_f = 'EC-EARTH 2.3 (2011)'
         mrun_f = 'r12i1p1'
@@ -566,6 +600,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS 3'
         complex_f = '2222001000' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'LPJ-GUESS is a new component in EC-Earth3 (Miller et al., in prep), though it has previously been coupled to EC-Earth v2.3 (Weiss et al. 2012; Alessandri et al. 2017) using a simplified coupling scheme in which updates to leaf area index (LAI) alone were transferred between the submodels.'
         family_f = 'gcm'
         cmip_f = 5
@@ -593,6 +628,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222101000' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'In order to avoid a significant long-term sea-surface height reduction in coupled model runs due to a net precipitation - evaporation (P-E) imbalance in the EC-Earth3 atmosphere of about -0.016 mm/day in the historical period, the coupled model implements a runoff flux corrector, which amplifies river runoff by 7.95% in order to compensate for this effect. The atmospheric component of EC-Earth has been tuned with the goal of achieving a reasonably small radiative imbalance at the top of the atmosphere (TOA) at standard resolution (T255L91 – to which we refer in the following) in present-day atmosphere-standalone (AMIP) runs, using the CERES_EBAF_Ed4.0 dataset as a reference (Loeb et al. 2018).'
         family_f = 'gcm'
         cmip_f = 6
@@ -621,6 +657,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222221000' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'LPJ-GUESS is one of the first vegetation submodels coupled interactively to an atmospheric model, in which the size, age structure, temporal dynamics and spatial heterogeneity of the vegetated landscape are represented and simulated dynamically'
         family_f = 'gcm'
         cmip_f = 6
@@ -649,6 +686,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222221000' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'LPJ-GUESS is one of the first vegetation submodels coupled interactively to an atmospheric model, in which the size, age structure, temporal dynamics and spatial heterogeneity of the vegetated landscape are represented and simulated dynamically'
         family_f = 'gcm'
         cmip_f = 6
@@ -677,6 +715,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222102000' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'LPJ-GUESS is one of the first vegetation submodels coupled interactively to an atmospheric model, in which the size, age structure, temporal dynamics and spatial heterogeneity of the vegetated landscape are represented and simulated dynamically'
         family_f = 'gcm'
         cmip_f = 6
@@ -705,6 +744,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222221020' #provided by Ralf Döscher and Klaus Wyser
+        contact_f= 'Ralf Döscher and Klaus Wyser'
         addinfo_f = 'LPJ-GUESS is one of the first vegetation submodels coupled interactively to an atmospheric model, in which the size, age structure, temporal dynamics and spatial heterogeneity of the vegetated landscape are represented and simulated dynamically'
         family_f = 'esm'
         cmip_f = 6
@@ -734,6 +774,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL6'
         complex_f = '2222101000' #confirmed by Lijuan Li, ljli@mail.iap.ac.cn
+        contact_f= 'Lijuan Li, ljli@mail.iap.ac.cn'
         addinfo_f = 'tbgc not yet present in CLM3'
         cmip_f = 5
         rgb_f = '#800000'
@@ -761,6 +802,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL7'
         complex_f = '2222111000' #confirmed by Lijuan Li, ljli@mail.iap.ac.cn
+        contact_f= 'Lijuan Li, ljli@mail.iap.ac.cn'
         addinfo_f = 'both dynamic vegetation and tbgc present in CLM4.5, includes parametrization of the simple Max Planck Institute Aerosol Climatology model (MACv2‐SP) for anthropogenic aerosol effects'
         cmip_f = 6
         rgb_f = '#800000'
@@ -788,6 +830,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'unknown'
         complex_f = '2222222200' #confirmed by Huan Guo (NOAA)
+        contact_f = 'Huan Guo (NOAA)'
         addinfo_f = 'none'
         cmip_f = 5
         calendar_f = '365_day'
@@ -816,6 +859,7 @@ def get_historical_metadata(model):
         landice_f = 'simple iceberg calving model'
         coupler_f = 'inhouse'
         complex_f = '2222222221' #still needs to be confirmed by GFDL staff
+        contact_f = 'still needs to be confirmed by GFDL staff'
         addinfo_f = 'none'
         cmip_f = 5
         calendar_f = '365_day'
@@ -844,6 +888,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'unknown'
         complex_f = '2222222210' #confirmed by Huan Guo (NOAA)
+        contact_f = 'Huan Guo (NOAA)'
         addinfo_f = 'GFDL ID: 2019_0065'
         cmip_f = 6
         rgb_f = 'magenta'
@@ -871,6 +916,7 @@ def get_historical_metadata(model):
         landice_f = 'GFDL-LM4.1'
         coupler_f = 'unknown'
         complex_f = '2222222220' #still needs to be confirmed by GFDL staff
+        contact_f = 'still needs to be confirmed by GFDL staff'
         addinfo_f = 'GFDL ID: 2019_0353'
         cmip_f = 6
         calendar_f = '365_day'
@@ -899,6 +945,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'unknown'
         complex_f = '2222101100' #provided by Gavin A. Schmidt
+        contact_f = 'Gavin A. Schmidt'
         addinfo_f = 'physics_version 1, as indicated by p1, i.e. NINT (non interactive) model version'
         cmip_f = 5
         rgb_f = 'green'
@@ -926,6 +973,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'unknown'
         complex_f = '2222101100' #provided by Gavin A. Schmidt
+        contact_f = 'Gavin A. Schmidt'
         addinfo_f = 'physics_version 1, as indicated by p1, i.e. NINT (non interactive) model version'
         cmip_f = 5
         rgb_f = 'green'
@@ -953,6 +1001,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'unknown'
         complex_f = '2222101100' #provided by Gavin A. Schmidt
+        contact_f = 'Gavin A. Schmidt'
         addinfo_f = 'model_id: E200f10aF40oQ40, physics_index 1, in CMIP5, there were three formal versions of the models that varied according to the degree of interactivity in atmospheric composition (physics‐version¼1,2, or 3). In CMIP6, physics‐version 2 has been dropped, physicsversion 1 denoted as NINT (for noninteractive) uses ofﬂine whole‐atmosphere ozone and aerosol ﬁelds from physics‐version 3 the OMA model as described in Bauer et al. (2020), and two new aerosol schemes have been added: TOMAS (denoted by physics‐version 4) (Lee & Adams, 2012) and MATRIX (physics‐version 5) (Bauer et al., 2008), which will be described elsewhere.'
         cmip_f = 6
         rgb_f = 'green'
@@ -980,6 +1029,7 @@ def get_historical_metadata(model):
         landice_f = 'non-interactive, accumlated ice is not permitted to melt and is therefore permanently removed from the water cycle. The lost freshwater flux returns to the ocean by mean of flux correction.'
         coupler_f = 'inhouse'
         complex_f = '2222222120' # confirmed by by Gill Martin
+        contact_f = 'Gill Martin'
         addinfo_f = 'It is still rare for dynamic vegetation models to be coupled within climate GCMs. In C4MIP only 2 out of the 11 models were GCMs with dynamic vegetation, and both of those had some form of climate correction term such as ocean heat flux adjustment to enable the vegetation simulation to be sufficiently realistic. HadGEM2 dynamically simulates vegetation without a need for any flux-correction to its climate state.'
         cmip_f = 5
         rgb_f = '#FFA500' #orange
@@ -1007,6 +1057,7 @@ def get_historical_metadata(model):
         landice_f = 'non-interactive, accumlated ice is not permitted to melt and is therefore permanently removed from the water cycle. The lost freshwater flux returns to the ocean by mean of flux correction.'
         coupler_f = 'inhouse'
         complex_f = '2222222220' #confirmed by Gill Martin
+        contact_f = 'Gill Martin'
         addinfo_f = 'It is still rare for dynamic vegetation models to be coupled within climate GCMs. In C4MIP only 2 out of the 11 models were GCMs with dynamic vegetation, and both of those had some form of climate correction term such as ocean heat flux adjustment to enable the vegetation simulation to be sufficiently realistic. HadGEM2 dynamically simulates vegetation without a need for any flux-correction to its climate state.'
         cmip_f = 5
         rgb_f = '#FFA500'
@@ -1034,6 +1085,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS-MCT'
         complex_f = '2222002000' #confirmed by Gill Martin
+        contact_f = 'Gill Martin'
         addinfo_f = ''
         cmip_f = 6
         rgb_f = '#FFA500'
@@ -1061,6 +1113,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222220010' #provided by Evgeny Volodin
+        contact_f = 'Evgeny Volodin'
         addinfo_f = 'Includes interactive carbon and methane cycles over land, but the representation of ocean biogeochemistry is unclear.'
         source_f = 'inmcm4 (2009)'
         cmip_f = 5
@@ -1090,6 +1143,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222222010' #still has to be confirmed by Evgeny Volodin
+        contact_f = 'Evgeny Volodin'
         addinfo_f = 'interactive aerosol component'
         source_f = 'INM-CM5-0 (2016): \naerosol: INM-AER1\natmos: INM-AM5-0 (2x1.5; 180 x 120 longitude/latitude; 73 levels; top level sigma = 0.0002)\natmosChem: none\nland: INM-LND1\nlandIce: none\nocean: INM-OM5 (North Pole shifted to 60N, 90E. 0.5x0.25; 720 x 720 longitude/latitude; 40 levels; vertical sigma coordinate)\nocnBgchem: none\nseaIce: INM-ICE1'
         cmip_f = 6
@@ -1119,6 +1173,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS'
         complex_f = '2222221110' # commented by Olivier Boucher but still unclear
+        contact_f = 'Olivier Boucher'
         addinfo_f = 'This is the full carbon-cycle configuration of the IPSL-CM5A-LR model. It is however unclear wether CO2 concentrations or emissions were used for this model version (see Fig. 1c, d and pages 2133-34 in 0.1007/s00382-012-1636-1). Most likely, concentrations were used.'
         family_f = 'esm'
         cmip_f = 5
@@ -1148,6 +1203,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS'
         complex_f = '2222221110' # commented by Olivier Boucher but still unclear
+        contact_f = 'Olivier Boucher'
         addinfo_f = 'This is the full carbon-cycle configuration of the IPSL-CM5A-LR model. It is however unclear wether CO2 concentrations or emissions were used for this model version (see Fig. 1c, d and pages 2133-34 in 0.1007/s00382-012-1636-1). Most likely, concentrations were used.'
         cmip_f = 5
         calendar_f = 'gregorian'
@@ -1176,6 +1232,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3‐MCT'
         complex_f = '2222221121' # commented by Olivier Boucher but still unclear
+        contact_f = 'Olivier Boucher'
         addinfo_f = 'internal ice-sheet dynamics are not taken into account by the ice-sheet representation'
         cmip_f = 6
         rgb_f =  'grey'
@@ -1203,6 +1260,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222222000' #yet has to be confirmed
+        contact_f = 'yet has to be confirmed'
         addinfo_f = 'physics_index: 1, realization_index: 1'
         family_f = 'gcm'
         cmip_f = 6
@@ -1232,6 +1290,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = ''
         complex_f = '2222221120' #provided by YoungHo Kim
+        contact_f = 'YoungHo Kim'
         addinfo_f = ' based on a low-resolution version of the Geophysical Fluid Dynamics Laboratory Climate Model version 2.5. he main changes made to the base model include using new cumulus convection and ocean mixed layer parameterization schemes, which improve the model fidelity significantly. In addition, the KIOST-ESM adopts dynamic vegetation and new soil respiration schemes in its land model component.'
         family_f = 'esm'
         cmip_f = 6
@@ -1260,6 +1319,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3'
         complex_f = '2222220020' #confirmed by Thorsten Mauritsen
+        contact_f = 'Thorsten Mauritsen'
         addinfo_f = 'tuning information in 10.1029/2012MS000154, the carbon cycle has been added to the model system. This constitutes the largest conceptual difference between MPI-ESM and its predecessor model ECHAM5/MPIOM [Jungclaus et al, 2006] that has been used for CMIP3. All carbon fluxes from natural vegetation and soils [Schneck et al., 2013], as well as from anthropogenic land use and land use change [Pongratz et al., 2009] are simulated consistently.'
         cmip_f = 5
         rgb_f = '#00FF00'
@@ -1287,6 +1347,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3'
         complex_f = '2222220020' #confirmed by Thorsten Mauritsen
+        contact_f = 'Thorsten Mauritsen'
         addinfo_f = 'tuning information in 10.1029/2012MS000154, the carbon cycle has been added to the model system. This constitutes the largest conceptual difference between MPI-ESM and its predecessor model ECHAM5/MPIOM [Jungclaus et al, 2006] that has been used for CMIP3. All carbon fluxes from natural vegetation and soils [Schneck et al., 2013], as well as from anthropogenic land use and land use change [Pongratz et al., 2009] are simulated consistently.'
         cmip_f = 5
         calendar_f = 'gregorian'
@@ -1315,6 +1376,7 @@ def get_historical_metadata(model):
         landice_f = 'none/prescribed'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222221020' #confirmed by Thorsten Mauritsen
+        contact_f = 'Thorsten Mauritsen'
         addinfo_f = 'Among other aspects, coding errors were corrected in this version. The vegetation distribution is dynamically computed.'
         cmip_f = 6
         calendar_f = 'gregorian'
@@ -1343,6 +1405,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222222120' #confirmed by Ina Tegen
+        contact_f = 'Ina Tegen'
         addinfo_f = 'https://cera-www.dkrz.de/WDCC/ui/cerasearch/cmip6?input=CMIP6.AerChemMIP.HAMMOZ-Consortium.MPI-ESM-1-2-HAM'
         cmip_f = 6
         calendar_f = 'gregorian'
@@ -1370,6 +1433,7 @@ def get_historical_metadata(model):
         landice_f = 'none/prescribed'
         coupler_f = 'OASIS3-MCT'
         complex_f = '2222221020' #confirmed by Thorsten Mauritsen
+        contact_f = 'Thorsten Mauritsen'
         addinfo_f = 'In this model version the land carbon cycle was not run to equilibrium and the vegetation distribution is prescribed by a map.'
         family_f = 'esm'
         cmip_f = 6
@@ -1398,6 +1462,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222102000' #provided by Hiroaki Tatebe
+        contact_f = 'Hiroaki Tatebe'
         addinfo_f = 'SPRINTARS is interactive in the troposphere only, stratospheric chemistry is prescribed. The boundary conditions for the land module consist of the fractions of three tiles (potential vegetation, cropland, and lake), the distribution of potential vegetation, and the leaf area index (LAI).'
         family_f = 'gcm'
         cmip_f = 5
@@ -1426,6 +1491,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222222020' #provided by Hiroaki Tatebe
+        contact_f = 'Hiroaki Tatebe'
         addinfo_f = 'For an overview for the physical variables and chemical species interacting in a full ESM, Table 1 in 10.5194/gmd-4-845-2011 is very instructive.'
         family_f = 'esm'
         cmip_f = 5
@@ -1453,6 +1519,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222102000' #provided by Hiroaki Tatebe
+        contact_f = 'Hiroaki Tatebe'
         addinfo_f = 'SPRINTARS is interactive in the troposphere only, stratospheric chemistry is prescribed. Vegetation and soil properties are prescribed.'
         family_f = 'gcm'
         cmip_f = 6
@@ -1481,6 +1548,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'inhouse'
         complex_f = '2222022020' #provided by Hiroaki Tatebe
+        contact_f = 'Hiroaki Tatebe'
         addinfo_f = ''
         family_f = 'esm'
         cmip_f = 6
@@ -1494,6 +1562,21 @@ def get_historical_metadata(model):
         lev_oc_f = 63 #from metadata in file
         ecs_f = 2.7
         tcr_f = 1.6
+    elif model == 'jra55':
+        mrun_f = 'r1i1p1'
+        family_f = 'reanalysis'
+        cmip_f = 1 #this is a fake score in order to be able to work with reanlaysis datasets as if they were GCMs in analysis_hist.py
+        complex_f = '1111111111' #this is a fake score in order to be able to work with reanlaysis datasets as if they were GCMs in analysis_hist.py
+        rgb_f = '#B5651D'
+        marker_f = '$JRA$'
+        latres_atm_f = np.nan
+        lonres_atm_f = np.nan
+        lev_atm_f = np.nan
+        latres_oc_f = np.nan
+        lonres_oc_f = np.nan
+        lev_oc_f = np.nan
+        ecs_f = np.nan
+        tcr_f = np.nan
     elif model == 'mri_esm1':
         fullname_f = 'MRI-ESM1 2011'
         mrun_f = 'r1i1p1'
@@ -1508,6 +1591,7 @@ def get_historical_metadata(model):
         landice_f = 'SMIST'
         coupler_f = 'Scup'
         complex_f = '2222122220' #provided by Seiji Yukimoto
+        contact_f = 'Seiji Yukimoto'
         addinfo_f = 'SMIST is a simple ice sheet and iceberg calving model that does not include 3D dynamic and thermodynamic ice sheet dynamics. These were planned to be included in the more complex SICOPOLIS model'
         family_f = 'esm'
         cmip_f = 5
@@ -1535,6 +1619,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'Scup'
         complex_f = '2222112210' #122220 for r1i2p1f1, provided by Seiji Yukimoto
+        contact_f = 'Seiji Yukimoto'
         addinfo_f = ''
         family_f = 'esm'
         cmip_f = 6
@@ -1565,6 +1650,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'CPL7'
         complex_f = '2222122000' #confirmed by Øyvind Seland
+        contact_f = 'Øyvind Seland'
         addinfo_f = 'based on the Community Climate System Model version 4 (CCSM4); in the NorESM experiments discussed in this study, the carbon–nitrogen (CN) cycle option of CLM4 is enabled (Thornton et al., 2007; Gent et al., 2011). Within the land component the carbon and nitrogen are prognostic variables, while carbon and nitrogen fluxes are diagnostically determined and do not influence other model components.'
         family_f = 'gcm'
         cmip_f = 5
@@ -1594,6 +1680,7 @@ def get_historical_metadata(model):
         landice_f = 'none' #WARNING: while 10.5194/gmd-2019-378 states CISM is not activated, it is indicated in the source_id attribute of the models' nc files. These information are in conflict.
         coupler_f = 'CPL7'
         complex_f = '2222122120' #confirmed by Øyvind Seland
+        contact_f = 'Øyvind Seland'
         addinfo_f = ''
         family_f = 'esm'
         cmip_f = 6
@@ -1623,6 +1710,7 @@ def get_historical_metadata(model):
         landice_f = 'none' #WARNING: while 10.5194/gmd-2019-378 states CISM is not activated, it is indicated in the source_id attribute of the models' nc files. These information are in conflict.
         coupler_f = 'CPL7'
         complex_f = '2222122120' #confirmed by Øyvind Seland
+        contact_f = 'Øyvind Seland'
         addinfo_f = 'based on CESM2.1, differs from noresm2_lm only in terms of the AGCMs horizontal resolution'
         family_f = 'esm'
         cmip_f = 6
@@ -1652,6 +1740,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'OASIS3-MCT3.0'
         complex_f = '2222221000' #provided by Dr. Jian Cao
+        contact_f = 'Dr. Jian Cao'
         addinfo_f = ''
         family_f = 'gcm'
         cmip_f = 6
@@ -1680,6 +1769,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = 'not specified in reference article or source_id attribute but should be CPL'
         complex_f = '2222222000' #treatment of tbgc is unclear from the reference article, but normally taken into account by CLM4, needs to be confirmed by the corresponding model development team yet
+        contact_f = 'Still needs to be confirmed.'
         addinfo_f = 'based on CESM1. Mainly, the parametrization schemes of CAM5.3 have been modified.'
         family_f = 'esm'
         cmip_f = 6
@@ -1707,6 +1797,7 @@ def get_historical_metadata(model):
         landice_f = 'none'
         coupler_f = ''
         complex_f = '2222222000' #confirmed by Wei-Liang Lee: "Most numbers are correct except the "vegetation" that I am not quite sure about. We did not turn on dynamic vegetation in our land model (CLM4). The fraction of land use is given by the input file but not simulated. However, the biomass can evolve because we turned on the carbon-nitrogen process. Therefore, maybe "vegetation" should be 1 (but it depends on how you define interactive for vegetation)."
+        contact_f = 'Wei-Liang Lee'
         addinfo_f = 'based on CESM1.2.2, incorporating several innovative physical and chemical parameterizations'
         family_f = 'esm'
         cmip_f = 6
@@ -1732,8 +1823,9 @@ def get_historical_metadata(model):
         chemistry_f = 'none'
         obgc_f = 'TOPAZv2.0'
         landice_f = 'none'
-        coupler_f = 'no info in refernce article'
+        coupler_f = 'no info found in reference article'
         complex_f = '2222101020' #provided by Panickal Swapna
+        contact_f = 'Panickal Swapna'
         addinfo_f = 'physics_index: 1'
         family_f = 'gcm'
         cmip_f = 6
@@ -1749,5 +1841,30 @@ def get_historical_metadata(model):
         tcr_f = 1.7
     else:
         raise Exception('Error: check entry for <model> !!')
+    
+    print('-------'+fullname_f+' is configured as follows--------------------')
+    print('Considered run: '+mrun_f)
+    print('Complexity code following doi: 10.5194/gmd-15-1375-2022: '+complex_f)
+    print('This code was confirmed by: '+contact_f)
+    print('Contributes to CMIP Phase: '+str(cmip_f))
+    print('Latitudinal size of the atmosphere mesh: '+str(latres_atm_f)+' grid-boxes')
+    print('Longitudinal size of the atmosphere mesh: '+str(lonres_atm_f)+' grid-boxes')
+    print('Latitudinal size of the ocean mesh: '+str(latres_oc_f)+' grid-boxes')
+    print('Longitudinal size of the ocean mesh: '+str(lonres_oc_f)+' grid-boxes')
+    print('DOI of the reference article(s): '+doi_f)
+    print('--------This GCM is composed of the following sub-models----------')
+    print('Atmosphere model: '+atmos_f)
+    print('Ocean model: '+ocean_f)
+    print('Land-surface model: '+ocean_f)
+    print('Sea-ice model: '+seaice_f)
+    print('Aerosols model: '+aerosols_f)
+    print('Atmospheric chemistry model: '+aerosols_f)
+    print('Ocean biogeochemistry model: '+obgc_f)
+    print('Land-ice model: '+landice_f)
+    print('Coupler:' +coupler_f)
+    print('------------------------------------------------------------------')
+    print('Equlibrium Climate Sensitivity following doi 10.1126/sciadv.aba1981: '+str(ecs_f)+'K')
+    print('Transient Climate Response following 10.1126/sciadv.aba1981: '+str(tcr_f)+'K')
+    print('Additional information :'+addinfo_f)
     
     return(mrun_f,complex_f,family_f,cmip_f,rgb_f,marker_f,latres_atm_f,lonres_atm_f,lev_atm_f,latres_oc_f,lonres_oc_f,lev_oc_f,ecs_f,tcr_f)
