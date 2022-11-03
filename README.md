@@ -1,4 +1,8 @@
-# get_historical_metadata.py('name_of_the_gcm')
+# gcm-metadata-for-cmip
+
+contains get_historical_metadata.py
+
+usage: get_historical_metadata('name_of_the_gcm')
 
 """Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
     Dependencies: numpy
