@@ -7,11 +7,8 @@ usage: get_historical_metadata('name_of_the_gcm')
 """Python function assigning metadata to the coupled model configurations contributing historical experiments to CMIP5 and 6
     Dependencies: numpy
     input = name of the coupled model configuration (list of character strings), possible entries are (case-sensitive!):
-    ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_hr4','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5',
-    'cnrm_cm5','cnrm_cm6_1','cnrm_cm6_1_hr','cnrm_esm2_1','csiro_mk3_6_0','ec_earth','ec_earth3','ec_earth3_veg','ec_earth3_veg_lr','ec_earth3_aerchem',
-    'ec_earth3_cc','fgoals_g2','fgoals_g3','gfdl_cm3','gfdl_cm4','gfdl_esm2g','gfdl_esm4','giss_e2_h','giss_e2_r','giss_e2_1_g','hadgem2_es','hadgem2_cc',
-    'hadgem3_gc31_mm','iitm_esm','inm_cm4','inm_cm5','ipsl_cm5a_lr','ipsl_cm5a_mr','ipsl_cm6a_lr','kiost_esm','miroc5','miroc6','miroc_esm','miroc_es2l','mpi_esm_lr',
-    'mpi_esm_mr','mpi_esm_1_2_lr','mpi_esm_1_2_hr','mpi_esm_1_2_ham','mri_esm1','mri_esm2_0','nesm3','noresm1_m','noresm2_lm','noresm2_mm','sam0_unicon','taiesm1']
+   ['access10','access13','access_cm2','access_esm1_5','awi_esm_1_1_lr','bcc_csm1_1','bcc_csm2_mr','ccsm4','cmcc_cm','cmcc_cm2_hr4','cmcc_cm2_sr5','cmcc_esm2','canesm2','canesm5','cnrm_cm5','cnrm_cm6_1','cnrm_cm6_1_hr','cnrm_esm2_1','csiro_mk3_6_0','ec_earth','ec_earth3','ec_earth3_veg','ec_earth3_veg_lr','ec_earth3_aerchem','ec_earth3_cc','fgoals_g2','fgoals_g3','gfdl_cm3','gfdl_cm4','gfdl_esm2g','gfdl_esm4','giss_e2_h','giss_e2_r','giss_e2_1_g','hadgem2_es','hadgem2_cc','hadgem3_gc31_mm','iitm_esm','inm_cm4','inm_cm5','ipsl_cm5a_lr','ipsl_cm5a_mr','ipsl_cm6a_lr','kiost_esm','miroc5','miroc6','miroc_esm','miroc_es2l','mpi_esm_lr','mpi_esm_mr','mpi_esm_1_2_lr','mpi_esm_1_2_hr','mpi_esm_1_2_ham','mri_esm1','mri_esm2_0','nesm3','noresm1_m','noresm2_lm','noresm2_mm','sam0_unicon','taiesm1']
+   
     output = mrun_f (string) are the run specification, family_f (string) either gcm or esm, doi_f (string) points to reference article(s),
     atmos_f (string) to the AGCM, surface_f (string) to the land surface model, ocean_f (string) to the OGCM, seaice_f (string) to the sea-ice model,
     aersol_f (string) to the aerosol model, chemistry_f (string) to the atmospheric chemistry model(s) in the troposphere and stratosphere,
