@@ -1858,7 +1858,7 @@ def get_historical_metadata(model):
     print('Land-surface model: '+surface_f)
     print('Sea-ice model: '+seaice_f)
     print('Aerosols model: '+aerosols_f)
-    print('Atmospheric chemistry model: '+aerosols_f)
+    print('Atmospheric chemistry model: '+chemistry_f)
     print('Ocean biogeochemistry model: '+obgc_f)
     print('Land-ice model: '+landice_f)
     print('Coupler:' +coupler_f)
