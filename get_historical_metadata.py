@@ -1855,7 +1855,7 @@ def get_historical_metadata(model):
     print('--------This GCM is composed of the following sub-models----------')
     print('Atmosphere model: '+atmos_f)
     print('Ocean model: '+ocean_f)
-    print('Land-surface model: '+ocean_f)
+    print('Land-surface model: '+surface_f)
     print('Sea-ice model: '+seaice_f)
     print('Aerosols model: '+aerosols_f)
     print('Atmospheric chemistry model: '+aerosols_f)
